@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+<<<<<<< HEAD
+guid: afed84af418d5d4408e243407a85dd3d
+=======
+<<<<<<< HEAD:Assets/Rubbe/Scripts/Slime.cs.meta
+guid: 7d0f7069b701b114682c7d9d1ff8502f
+=======
+guid: afed84af418d5d4408e243407a85dd3d
+>>>>>>> parent of 6e15f53 (4/5):Assets/Script/CardCtrl.cs.meta
+>>>>>>> parent of 6e15f53 (4/5)
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
