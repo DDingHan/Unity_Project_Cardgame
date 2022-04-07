@@ -277,11 +277,11 @@ MonoBehaviour:
     character: {fileID: 99869412}
   - cardName: S
     cardImage: {fileID: 21300000, guid: 2cd48be58c0c10d44ae757f5ba003434, type: 3}
-    weight: 100
+    weight: 1
     character: {fileID: 2021031687}
   - cardName: M
     cardImage: {fileID: 21300000, guid: 2cd48be58c0c10d44ae757f5ba003434, type: 3}
-    weight: 1
+    weight: 100
     character: {fileID: 19249037}
   total: 0
   result: []
