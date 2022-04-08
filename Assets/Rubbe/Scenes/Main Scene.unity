@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4427a7e8ab040b5489cb823d8dcb4f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Warrior_Skill_Tier1: {fileID: 4565038384383572790, guid: 007f748f8f4e1cb4db386aaebee7da4d, type: 3}
+  Warrior_Skill_Tier1: {fileID: 7666326801592637743, guid: 2e7b38ed31fb2cb4fbfad709fe3a89ea, type: 3}
   Warrior_Skill_Tier2: {fileID: 8561382810435778259, guid: ec21c28ee3e810b4f8e084704bddd8b8, type: 3}
   Warrior_Skill_Tier3: {fileID: 1605086361799042052, guid: 6505810a1adc93140a192721319e5f3a, type: 3}
   Archer_Skill_Tier1: {fileID: 8918310513570718997, guid: 020eb932e5757cb429932551f83db8cc, type: 3}
