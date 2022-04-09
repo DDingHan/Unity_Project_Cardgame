@@ -22,10 +22,15 @@ public class FeverTime : MonoBehaviour
         }
     }
 
+    void Screen_Effect()
+    {
+        StartCoroutine(ShowScreenEffect());
+    }
+
     IEnumerator ShowScreenEffect()
     {
-        BloodScreen.color = new Color(1, 0, 0, UnityEngine.Random.Range(0.2f, 0.3f));
-        yield return new WaitForSeconds(0.1f);
+        BloodScreen.color = new Color(0, 0.003508208f, 0.8207547f, UnityEngine.Random.Range(0.8f, 1f));
+        yield return new WaitForSeconds(3f);
         BloodScreen.color = Color.clear;
     }
 }

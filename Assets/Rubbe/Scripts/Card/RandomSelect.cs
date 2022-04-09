@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RandomSelect : MonoBehaviour
 {
@@ -78,12 +79,19 @@ public class RandomSelect : MonoBehaviour
 
     //#2. 현재 뒤집은 카드 인덱스를 저장하기
     public object[] success_card_set = new object[2];
+    public Slider slider;
     public void StartReset_Success()
     {
         success_card_set[0] = firstCardIndex;
         success_card_set[1] = secondCardIndex;
         CardUIList[firstCardIndex].SendMessage("Saving_First",success_card_set);
         CardUIList[secondCardIndex].SendMessage("Saving_Second", success_card_set);
+        slider.value += 0.1f;
+        if (slider.value == 1)
+        {
+            GameObject.Find("Screen_Effect").GetComponent<FeverTime>().SendMessage("Screen_Effect");
+            slider.value = 0;
+        }
     }
 
     object[] card_set_1 = new object[2];
@@ -103,6 +111,15 @@ public class RandomSelect : MonoBehaviour
             card_set_2[0] = firstCardIndex;
             card_set_2[1] = secondCardIndex;
             GameObject.Find("Deck").GetComponent<SkillSet>().SendMessage("invoke_Skill_Next", name);
+        }
+        if (slider.value != 0)
+        {
+            slider.value += 0.1f;
+            if (slider.value == 1)
+            {
+                GameObject.Find("Screen_Effect").GetComponent<FeverTime>().SendMessage("Screen_Effect");
+                slider.value = 0;
+            }
         }
     }
 

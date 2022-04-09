@@ -113,6 +113,8 @@ public class SkillSet : MonoBehaviour
         }
     }
 
+    public GameObject hudDamageText;
+
     void make_Skill_Effect()
     {
         if (AttackSubject == "Soldier")
@@ -160,5 +162,14 @@ public class SkillSet : MonoBehaviour
                 Instantiate(Magician_Skill_Tier3, Magician_Skill_Tier3.transform.position, Magician_Skill_Tier3.transform.rotation);
             }
         }
+        //GameObject hudText = Instantiate(hudDamageText);
+        //hudText.GetComponent<DamageText>().damage = 5;
+        Invoke("TakeDamage", 0.7f);
+    }
+
+    void TakeDamage()
+    {
+        GameObject hudText = Instantiate(hudDamageText);
+        hudText.GetComponent<DamageText>().damage = 5;
     }
 }
