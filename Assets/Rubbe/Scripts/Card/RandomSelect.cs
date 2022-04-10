@@ -90,7 +90,7 @@ public class RandomSelect : MonoBehaviour
         if (slider.value == 1)
         {
             GameObject.Find("Screen_Effect").GetComponent<FeverTime>().SendMessage("Screen_Effect");
-            slider.value = 0;
+           // slider.value = 0;
         }
     }
 
@@ -118,7 +118,7 @@ public class RandomSelect : MonoBehaviour
             if (slider.value == 1)
             {
                 GameObject.Find("Screen_Effect").GetComponent<FeverTime>().SendMessage("Screen_Effect");
-                slider.value = 0;
+                //slider.value = 0;
             }
         }
     }
