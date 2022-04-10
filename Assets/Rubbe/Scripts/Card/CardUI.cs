@@ -10,6 +10,8 @@ public class CardUI : MonoBehaviour, IPointerDownHandler
     public Text cardName;
     public GameObject character;
     Animator card_animator;
+
+    public Text cardBackName;
     
 
     public int cardIndex;
@@ -25,6 +27,8 @@ public class CardUI : MonoBehaviour, IPointerDownHandler
         chr.sprite = card.cardImage;
         cardName.text = card.cardName;
         character = card.character;
+
+        cardBackName.text = card.cardName;
     }
     // 카드가 클릭되면 뒤집는 애니메이션 재생
     public void OnPointerDown(PointerEventData eventData)

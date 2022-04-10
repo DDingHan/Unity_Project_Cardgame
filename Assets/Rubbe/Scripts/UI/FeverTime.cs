@@ -9,6 +9,7 @@ public class FeverTime : MonoBehaviour
 
     //public Image BloodScreen;
     public GameObject feverText;
+    public GameObject feverTime_Screen;
     public bool isFeverTime;
     public Slider slider;
     // Start is called before the first frame update
@@ -24,7 +25,12 @@ public class FeverTime : MonoBehaviour
         {
             //StartCoroutine(ShowScreenEffect());
             //GameObject hudFeverText = Instantiate(feverText);
-            Screen_Effect();
+            //Screen_Effect();
+            int z = 1;
+            Text Temp = GameObject.Find("Deck").GetComponent<RandomSelect>().CardUIList[z].cardBackName;
+            Color alpha = Temp.color;
+            alpha.a = 1;
+            Temp.color = alpha;
         }
         if (isFeverTime)
         {
@@ -50,6 +56,7 @@ public class FeverTime : MonoBehaviour
     {
         //BloodScreen.color = new Color(0.9339623f, 0.1013261f, 0.1013261f, UnityEngine.Random.Range(0.8f, 1f));
         GameObject hudFeverText = Instantiate(feverText);
+        GameObject hudFeverEffect = Instantiate(feverTime_Screen);
 
         while (isFeverTime)
         {
@@ -58,5 +65,6 @@ public class FeverTime : MonoBehaviour
         //yield return new WaitForSeconds(2f);
         hudFeverText.GetComponent<TextMeshPro>().color = Color.clear;
         Destroy(hudFeverText);
+        Destroy(hudFeverEffect);
     }
 }
