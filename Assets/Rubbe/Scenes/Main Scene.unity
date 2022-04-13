@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 262ba92c81861d84c854741eb19bbe99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  feverText: {fileID: 5411165721913599949, guid: 7dd09372933dee342acaf0c37acc3142, type: 3}
+  feverText: {fileID: 1047771771771215410, guid: 7dd09372933dee342acaf0c37acc3142, type: 3}
   feverTime_Screen: {fileID: 5347968048510383992, guid: fcd6998bd9b63ac47bec0743cd439eb5, type: 3}
   isFeverTime: 0
   slider: {fileID: 233956387}
@@ -2546,6 +2546,18 @@ PrefabInstance:
     - target: {fileID: 1906616783129595161, guid: 75cb612308941fe4ca50b9b4244ad8a6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1906616783737782234, guid: 75cb612308941fe4ca50b9b4244ad8a6, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1906616783737782234, guid: 75cb612308941fe4ca50b9b4244ad8a6, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1906616783737782234, guid: 75cb612308941fe4ca50b9b4244ad8a6, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75cb612308941fe4ca50b9b4244ad8a6, type: 3}

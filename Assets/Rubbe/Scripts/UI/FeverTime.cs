@@ -49,13 +49,15 @@ public class FeverTime : MonoBehaviour
     {
         isFeverTime = true;
         StartCoroutine(ShowScreenEffect());
+        StartCoroutine(ShowFeverText());
+        GetRandomNum_6();
         Debug.Log("피버타임 시작");
     }
 
     IEnumerator ShowScreenEffect()
     {
         //BloodScreen.color = new Color(0.9339623f, 0.1013261f, 0.1013261f, UnityEngine.Random.Range(0.8f, 1f));
-        GameObject hudFeverText = Instantiate(feverText);
+        //GameObject hudFeverText = Instantiate(feverText);
         GameObject hudFeverEffect = Instantiate(feverTime_Screen);
 
         while (isFeverTime)
@@ -63,8 +65,46 @@ public class FeverTime : MonoBehaviour
             yield return new WaitForSeconds(0.3f);
         }
         //yield return new WaitForSeconds(2f);
-        hudFeverText.GetComponent<TextMeshPro>().color = Color.clear;
-        Destroy(hudFeverText);
+        //hudFeverText.GetComponent<TextMeshPro>().color = Color.clear;
+        //Destroy(hudFeverText);
         Destroy(hudFeverEffect);
+        DelRandomNum_6();
+    }
+
+    IEnumerator ShowFeverText()
+    {
+        GameObject hudFeverText = Instantiate(feverText);
+        yield return new WaitForSeconds(1f);
+        Destroy(hudFeverText);
+    }
+
+    int[] numSave = new int[6];
+    void GetRandomNum_6()
+    {
+        numSave[0] = Random.Range(0, 4);
+        numSave[1] = Random.Range(4, 8);
+        numSave[2] = Random.Range(8, 12);
+        numSave[3] = Random.Range(12, 16);
+        numSave[4] = Random.Range(16, 20);
+        numSave[5] = Random.Range(20, 24);
+
+        for(int i = 0; i < 6; i++)
+        {
+            Text Temp = GameObject.Find("Deck").GetComponent<RandomSelect>().CardUIList[numSave[i]].cardBackName;
+            Color alpha = Temp.color;
+            alpha.a = 1;
+            Temp.color = alpha;
+        }
+    }
+
+    void DelRandomNum_6()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            Text Temp = GameObject.Find("Deck").GetComponent<RandomSelect>().CardUIList[numSave[i]].cardBackName;
+            Color alpha = Temp.color;
+            alpha.a = 0;
+            Temp.color = alpha;
+        }
     }
 }

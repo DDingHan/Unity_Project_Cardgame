@@ -86,11 +86,14 @@ public class RandomSelect : MonoBehaviour
         success_card_set[1] = secondCardIndex;
         CardUIList[firstCardIndex].SendMessage("Saving_First",success_card_set);
         CardUIList[secondCardIndex].SendMessage("Saving_Second", success_card_set);
-        slider.value += 0.1f;
-        if (slider.value == 1)
+        if (!GameObject.Find("Screen_Effect").GetComponent<FeverTime>().isFeverTime)
         {
-            GameObject.Find("Screen_Effect").GetComponent<FeverTime>().SendMessage("Screen_Effect");
-           // slider.value = 0;
+            slider.value += 0.1f;
+            if (slider.value == 1)
+            {
+                GameObject.Find("Screen_Effect").GetComponent<FeverTime>().SendMessage("Screen_Effect");
+                // slider.value = 0;
+            }
         }
     }
 
@@ -112,7 +115,7 @@ public class RandomSelect : MonoBehaviour
             card_set_2[1] = secondCardIndex;
             GameObject.Find("Deck").GetComponent<SkillSet>().SendMessage("invoke_Skill_Next", name);
         }
-        if (slider.value != 0)
+        if (slider.value != 0&& !GameObject.Find("Screen_Effect").GetComponent<FeverTime>().isFeverTime)
         {
             slider.value += 0.1f;
             if (slider.value == 1)
