@@ -74,7 +74,7 @@ public class FeverTime : MonoBehaviour
     IEnumerator ShowFeverText()
     {
         GameObject hudFeverText = Instantiate(feverText);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         Destroy(hudFeverText);
     }
 
