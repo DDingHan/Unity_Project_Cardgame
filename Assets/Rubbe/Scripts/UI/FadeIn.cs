@@ -1,41 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ChangeScene : MonoBehaviour
+public class FadeIn : MonoBehaviour
 {
     // Start is called before the first frame update
-    /*public void SceneChange()
-    {
-        SceneManager.LoadScene("Main Scene");
-    }*/
 
     public Image Panel;
     float time = 0f;
-    float F_time = 1f;
+    float F_time = 2f;
 
 
-    public void SceneChange()
+    void Start()
     {
-        //SceneManager.LoadScene("Main Scene");
-        StartCoroutine(FadeFlow());
+        StartCoroutine(FadeInImage());
     }
-    IEnumerator FadeFlow()
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    IEnumerator FadeInImage()
     {
         Panel.gameObject.SetActive(true);
         Color alpha = Panel.color;
-        while (alpha.a < 1f)
+        while (alpha.a > 0f)
         {
             time += Time.deltaTime / F_time;
-            alpha.a = Mathf.Lerp(0, 1, time);
+            alpha.a = Mathf.Lerp(1, 0, time);
             Panel.color = alpha;
             yield return null;
             //Debug.Log("³¡");
         }
         yield return null;
         Debug.Log("³¡");
-        SceneManager.LoadScene("Main Scene");
+        Panel.gameObject.SetActive(false);
     }
 }
