@@ -47,7 +47,7 @@ public class SkillSet : MonoBehaviour
                 Timer = 0f;
                 isDelay = true;
                 Debug.Log("스킬 티어 " + skill_Tier + " 발동중");
-                GameObject.Find("Deck").GetComponent<RandomSelect>().CardUIList[cardIndex].SendMessage("StartCharacterAnimation");
+                GameObject.Find("Deck").GetComponent<RandomSelect>().CardUIList[cardIndex].SendMessage("StartCharacterAnimation",skill_Tier);
                 GameObject.Find("Deck").GetComponent<RandomSelect>().SendMessage("Skill_Tier",skill_Tier);
                 make_Skill_Effect();
                 isDelay = false;

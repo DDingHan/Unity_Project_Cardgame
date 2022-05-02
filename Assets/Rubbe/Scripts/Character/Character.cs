@@ -11,6 +11,13 @@ public class Character : MonoBehaviour
     float firstX;
     bool isSolider = false;
     public bool chr_Died = false;
+
+    public int HP = 100;
+    public int DAMAGE_1_Tier = 10;
+    public int DAMAGE_2_Tier = 20;
+    public int DAMAGE_3_Tier = 30;
+    public float skill_Tier;
+
     int damaged_count = 0;
 
     private void Start()
@@ -24,6 +31,7 @@ public class Character : MonoBehaviour
         isSolider = true;
         success_card_set[0] = index[0];
         success_card_set[1] = index[1];
+        skill_Tier = (float)index[2];
         StartCoroutine(Character_Moving());
     }
 
@@ -32,6 +40,7 @@ public class Character : MonoBehaviour
     {
         success_card_set[0] = index[0];
         success_card_set[1] = index[1];
+        skill_Tier = (float)index[2];
         StartCoroutine(Character_Attacking());
     }
     IEnumerator Character_Moving()
@@ -53,9 +62,9 @@ public class Character : MonoBehaviour
     {
         chr_animator.SetBool("Attack", true);
         int attackCount = 1;
-        while (attackCount <= 3)
+        while (attackCount <= 1)
         {            
-            Debug.LogFormat("Attackcount = {0}",attackCount);
+            Debug.LogFormat("{0} Attacking",character.name);
             attackCount += 1;
             yield return new WaitForSecondsRealtime(0.6f);
             Attack_Slime();
@@ -86,17 +95,22 @@ public class Character : MonoBehaviour
 
     void Attack_Slime()
     {
-        if(character.name == "Soldier")
+        object[] skill_info = new object[4];
+        skill_info[0] = DAMAGE_1_Tier;
+        skill_info[1] = DAMAGE_2_Tier;
+        skill_info[2] = DAMAGE_3_Tier;
+        skill_info[3] = skill_Tier;
+        if (character.name == "Soldier")
         {
-            GameObject.Find("Slime1").GetComponent<Slime>().SendMessage("damaged_start");
+            GameObject.Find("Slime1").GetComponent<Slime>().SendMessage("damaged_start",skill_info);
         }
         else if(character.name == "Archer") 
         {
-            GameObject.Find("Slime2").GetComponent<Slime>().SendMessage("damaged_start");
+            GameObject.Find("Slime2").GetComponent<Slime>().SendMessage("damaged_start", skill_info);
         }
         else if (character.name == "Mage")
         {
-            GameObject.Find("Slime3").GetComponent<Slime>().SendMessage("damaged_start");
+            GameObject.Find("Slime3").GetComponent<Slime>().SendMessage("damaged_start", skill_info);
         }
 
 
@@ -122,16 +136,17 @@ public class Character : MonoBehaviour
         firstslime.GetComponent<Slime>().SendMessage("damaged_start");*/
     }
 
-    void damaged_start()
+    void damaged_start(int Slime_DAMAGE)
     {
+        Debug.Log(Slime_DAMAGE);
         chr_animator.SetBool("Damaged", true);
-        damaged_count++;
+        HP -= Slime_DAMAGE;
         Invoke("damaged_end", 0.4f);
     }
     void damaged_end()
     {
         chr_animator.SetBool("Damaged", false);
-        if(damaged_count >= 3)
+        if(HP <= 0)
         {
             Character_Die();
         }

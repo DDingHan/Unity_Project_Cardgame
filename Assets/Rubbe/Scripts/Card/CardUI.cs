@@ -146,17 +146,22 @@ public class CardUI : MonoBehaviour, IPointerDownHandler
         success_card_set[1] = index[1];
     }
 
-    void StartCharacterAnimation()
+    void StartCharacterAnimation(float skill_Tier)
     {
         Debug.Log("애니메이션 시작");
+        object[] success_card_set_and_Skill_Tier = new object[3];
+        success_card_set_and_Skill_Tier[0] = success_card_set[0];
+        success_card_set_and_Skill_Tier[1] = success_card_set[1];
+        success_card_set_and_Skill_Tier[2] = skill_Tier;
+
         if (character.name == "Soldier")
         {
-            character.GetComponent<Character>().SendMessage("Move", success_card_set);
+            character.GetComponent<Character>().SendMessage("Move", success_card_set_and_Skill_Tier);
             //Invoke("invoke_Skill", 1.0f);
         }
         else
         {
-            character.GetComponent<Character>().SendMessage("Attack", success_card_set);
+            character.GetComponent<Character>().SendMessage("Attack", success_card_set_and_Skill_Tier);
         }
     }
 

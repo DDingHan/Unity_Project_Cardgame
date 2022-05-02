@@ -8,6 +8,10 @@ public class Slime : MonoBehaviour
     public GameObject character;
     public float firstX;
     Animator slime_animator;
+    public int HP = 50;
+    public int DAMAGE = 10;
+    public float Player_Skill_Tier;
+    public int Player_Skill_Damage;
 
     private void Start()
     {
@@ -37,14 +41,22 @@ public class Slime : MonoBehaviour
         }
     }
 
-    void damaged_start()
+    void damaged_start(object[] skill_info)
     {
+        Player_Skill_Tier = (float)skill_info[3];
+        Player_Skill_Damage = (int)skill_info[(int)Player_Skill_Tier - 1];
+        Debug.LogFormat("{0} Tier Damaged! ({1})", Player_Skill_Tier, Player_Skill_Damage);
         slime_animator.SetBool("Damaged", true);
+        HP -= Player_Skill_Damage;
         Invoke("damaged_end", 0.2f);
     }
     void damaged_end()
     {
         slime_animator.SetBool("Damaged", false);
+        if (HP <= 0)
+        {
+            Invoke("Slime_Die", 1.0f);
+        }
     }
 
     IEnumerator Slime_Moving()
@@ -63,7 +75,7 @@ public class Slime : MonoBehaviour
     IEnumerator Slime_Attacking()
     {
         int slime_attackCount = 1;
-        while (slime_attackCount <= 3)
+        while (slime_attackCount <= 1)
         {
             Attack_Slime();
             Debug.LogFormat("Slime_Attackcount = {0}", slime_attackCount);
@@ -84,7 +96,18 @@ public class Slime : MonoBehaviour
 
     void Attack_Slime()
     {
-        character.GetComponent<Character>().SendMessage("damaged_start");
+        character.GetComponent<Character>().SendMessage("damaged_start",DAMAGE);
     }
 
+    void Slime_Die()
+    {
+        Debug.Log(slime.name + " Die");
+        slime_animator.SetBool("Die", true);
+        Invoke("Destory_Slime", 1.0f);
+    }
+    
+    void Destory_Slime()
+    {
+        Destroy(slime);
+    }
 }

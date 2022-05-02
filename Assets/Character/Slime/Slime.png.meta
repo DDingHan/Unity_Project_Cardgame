@@ -35,6 +35,18 @@ TextureImporter:
   - first:
       213: 8838806020795055057
     second: Slime_10
+  - first:
+      213: -3032925496964778609
+    second: Slime_11
+  - first:
+      213: -1882073603415319637
+    second: Slime_12
+  - first:
+      213: 1599567777623568899
+    second: Slime_13
+  - first:
+      213: -773282774266647859
+    second: Slime_14
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,12 +139,12 @@ TextureImporter:
       name: Slime_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 12
-        width: 16
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 3
+        y: 3
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -148,12 +160,12 @@ TextureImporter:
       name: Slime_1
       rect:
         serializedVersion: 2
-        x: 41
-        y: 12
-        width: 16
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 35
+        y: 3
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -169,12 +181,12 @@ TextureImporter:
       name: Slime_2
       rect:
         serializedVersion: 2
-        x: 73
-        y: 12
-        width: 16
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 67
+        y: 3
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -190,12 +202,12 @@ TextureImporter:
       name: Slime_3
       rect:
         serializedVersion: 2
-        x: 105
-        y: 12
-        width: 16
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 99
+        y: 3
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -211,12 +223,12 @@ TextureImporter:
       name: Slime_4
       rect:
         serializedVersion: 2
-        x: 137
-        y: 12
-        width: 16
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 131
+        y: 3
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -232,12 +244,12 @@ TextureImporter:
       name: Slime_5
       rect:
         serializedVersion: 2
-        x: 169
-        y: 12
-        width: 16
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 163
+        y: 3
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -253,12 +265,12 @@ TextureImporter:
       name: Slime_6
       rect:
         serializedVersion: 2
-        x: 201
-        y: 12
-        width: 16
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 195
+        y: 3
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -274,12 +286,12 @@ TextureImporter:
       name: Slime_7
       rect:
         serializedVersion: 2
-        x: 233
-        y: 12
-        width: 16
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 227
+        y: 3
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -295,12 +307,12 @@ TextureImporter:
       name: Slime_8
       rect:
         serializedVersion: 2
-        x: 265
-        y: 12
-        width: 16
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 259
+        y: 3
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -316,12 +328,12 @@ TextureImporter:
       name: Slime_9
       rect:
         serializedVersion: 2
-        x: 297
-        y: 12
-        width: 16
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 291
+        y: 3
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -337,10 +349,10 @@ TextureImporter:
       name: Slime_10
       rect:
         serializedVersion: 2
-        x: 329
-        y: 4
-        width: 118
-        height: 28
+        x: 387
+        y: 3
+        width: 28
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -350,6 +362,90 @@ TextureImporter:
       bones: []
       spriteID: 1dbb214fe3fb9aa70800000000000000
       internalID: 8838806020795055057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime_11
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 3
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8570336452e8e5d0800000000000000
+      internalID: -3032925496964778609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime_12
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 3
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bab5a43870881e5e0800000000000000
+      internalID: -1882073603415319637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime_13
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 3
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 302f96b3b6ec23610800000000000000
+      internalID: 1599567777623568899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime_14
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 3
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dca68e0f96fb445f0800000000000000
+      internalID: -773282774266647859
       vertices: []
       indices: 
       edges: []
