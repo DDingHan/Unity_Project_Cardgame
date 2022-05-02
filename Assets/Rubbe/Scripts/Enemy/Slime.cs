@@ -5,8 +5,8 @@ using UnityEngine;
 public class Slime : MonoBehaviour
 {
     public GameObject slime;
-    public GameObject character;
-    public float firstX;
+    public GameObject Player;
+    Vector3 first_position;
     Animator slime_animator;
     public int HP = 50;
     public int DAMAGE = 10;
@@ -23,20 +23,14 @@ public class Slime : MonoBehaviour
         //예시용으로 A,S,D를 눌렀을때 슬라임 공격 발동
         if (Input.GetKeyDown(KeyCode.A) && slime.name == "Slime1")
         {
-            firstX = slime.transform.position.x;
-            character = GameObject.Find("Soldier");
             StartCoroutine(Slime_Moving());
         }
         else if (Input.GetKeyDown(KeyCode.S) && slime.name == "Slime2")
         {
-            firstX = slime.transform.position.x;
-            character = GameObject.Find("Archer");
             StartCoroutine(Slime_Moving());
         }
         else if (Input.GetKeyDown(KeyCode.D) && slime.name == "Slime3")
         {
-            firstX = slime.transform.position.x;
-            character = GameObject.Find("Mage");
             StartCoroutine(Slime_Moving());
         }
     }
@@ -61,12 +55,16 @@ public class Slime : MonoBehaviour
 
     IEnumerator Slime_Moving()
     {
-        float shortDis = Vector3.Distance(slime.transform.position, character.transform.position);
-        while (shortDis >= 0.5f)
+        first_position = slime.transform.position;
+        int Player_index = Random.Range(0,3);
+        Player = GameObject.Find("Player").transform.GetChild(Player_index).gameObject;
+        Debug.Log(Player.name);
+        float Distance = slime.transform.position.x - Player.transform.position.x;
+        while (Distance > 0.5f)
         {
-            slime.transform.position += Vector3.left * 5.0f * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(slime.transform.position, Player.transform.position + Vector3.up * 0.2f + Vector3.right * 0.5f, 3.0f * Time.deltaTime);
             yield return new WaitForSecondsRealtime(0.01f);
-            shortDis = Vector3.Distance(slime.transform.position, character.transform.position);
+            Distance = slime.transform.position.x - Player.transform.position.x;
         }
 
         StartCoroutine(Slime_Attacking());
@@ -87,16 +85,18 @@ public class Slime : MonoBehaviour
 
     IEnumerator Slime_Moving_Back()
     {
-        while (slime.transform.position.x <= firstX)
+        float Distance = Vector3.Distance(slime.transform.position, first_position);
+        while (Distance > 0)
         {
-            slime.transform.position -= Vector3.left * 5.0f * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, first_position, 3.0f * Time.deltaTime);
             yield return new WaitForSecondsRealtime(0.01f);
+            Distance = Vector3.Distance(slime.transform.position, first_position);
         }
     }
 
     void Attack_Slime()
     {
-        character.GetComponent<Character>().SendMessage("damaged_start",DAMAGE);
+        Player.GetComponent<Character>().SendMessage("damaged_start",DAMAGE);
     }
 
     void Slime_Die()
@@ -108,6 +108,9 @@ public class Slime : MonoBehaviour
     
     void Destory_Slime()
     {
-        Destroy(slime);
+        //씬에서 삭제하는것 대신에 비활성화(index문제)
+        //새로운 맵으로 넘어갈때는 전부 삭제하고 다시 몬스터 채우기
+        slime.SetActive(false);
+        GameObject.Find("Cursor").GetComponent<Cursor_Move>().Destroy_count++;
     }
 }

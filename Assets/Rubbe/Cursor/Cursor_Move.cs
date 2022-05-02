@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Cursor_Move : MonoBehaviour
 {
-    int now_index;
+    public int now_index;
     public GameObject Monster;
     public GameObject[] Monster_child;
-    int Monster_count;
-    int Destroy_count=0;
+    public int Monster_count;
+    public int Destroy_count=0;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +26,7 @@ public class Cursor_Move : MonoBehaviour
         //몬스터가 없을 경우 커서 삭제
         if(Destroy_count == Monster_count)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -35,9 +35,8 @@ public class Cursor_Move : MonoBehaviour
             {
                 now_index++;
                 if (now_index > 2) now_index = 0;
-            } while (Monster_child[now_index] == null); //해당 자리에 몬스터가 없을경우 나올때까지 아래로 이동
+            } while (Monster_child[now_index].gameObject.activeSelf == false); //해당 자리에 몬스터가 없을경우 나올때까지 아래로 이동
         
-            Move(now_index);
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -47,35 +46,19 @@ public class Cursor_Move : MonoBehaviour
             {
                 now_index--;
                 if (now_index < 0) now_index = 2;
-            } while (Monster_child[now_index] == null); //해당 자리에 몬스터가 없을경우 나올때까지 위로 이동
-            Move(now_index);
-        }
-        else if (Input.GetKeyDown(KeyCode.B))
-        {
-            Destroy(Monster_child[0]);
-            Destroy_count++;
-        }
-        else if (Input.GetKeyDown(KeyCode.N))
-        {
-            Destroy(Monster_child[1]);
-            Destroy_count++;
-        }
-        else if (Input.GetKeyDown(KeyCode.M))
-        {
-            Destroy(Monster_child[2]);
-            Destroy_count++;
+            } while (Monster_child[now_index].gameObject.activeSelf == false); //해당 자리에 몬스터가 없을경우 나올때까지 위로 이동
         }
 
         //필드위에 몬스터가 1마리 이상 살아있고 커서가 있는 자리 몬스터가 죽을경우 몬스터가 나올때까지 아래로 이동
-        if (Destroy_count != Monster_count && Monster_child[now_index] == null)
+        if (Destroy_count != Monster_count && Monster_child[now_index].gameObject.activeSelf == false)
         {
             do
             {
                 now_index++;
                 if (now_index > 2) now_index = 0;
-            } while (Monster_child[now_index] == null);
-            Move(now_index);
+            } while (Monster_child[now_index].gameObject.activeSelf == false);
         }
+        Move(now_index);
     }
 
     void Move(int index)

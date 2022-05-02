@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public GameObject character;    
+    public GameObject character;
+    public GameObject Monster;
     Animator chr_animator;
     object[] success_card_set = new object[2];
-    List<GameObject> slimes;
-    float firstX;
+    Vector3 first_position;
     bool isSolider = false;
     public bool chr_Died = false;
 
@@ -27,7 +27,7 @@ public class Character : MonoBehaviour
     //#4-1. solider일때만 움직이고 공격후 다시 원위치로 오기
     void Move(object[] index)
     {
-        firstX = character.transform.position.x;
+        first_position = character.transform.position;
         isSolider = true;
         success_card_set[0] = index[0];
         success_card_set[1] = index[1];
@@ -41,18 +41,22 @@ public class Character : MonoBehaviour
         success_card_set[0] = index[0];
         success_card_set[1] = index[1];
         skill_Tier = (float)index[2];
+        int Monster_index = GameObject.Find("Cursor").GetComponent<Cursor_Move>().now_index;
+        Monster = GameObject.Find("Monster").transform.GetChild(Monster_index).gameObject;
         StartCoroutine(Character_Attacking());
     }
     IEnumerator Character_Moving()
     {
         chr_animator.SetBool("Move", true);
-        GameObject enemy = GameObject.Find("Slime1");
-        float shortDis = Vector3.Distance(character.transform.position, enemy.transform.position);
-        while (shortDis >= 0.5f)
+        int Monster_index = GameObject.Find("Cursor").GetComponent<Cursor_Move>().now_index;
+        Monster = GameObject.Find("Monster").transform.GetChild(Monster_index).gameObject;
+        float Distance = Monster.transform.position.x -character.transform.position.x;
+        while (Distance > 0.5f)
         {
-            character.transform.position += Vector3.right * 5.0f * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, Monster.transform.position + Vector3.down * 0.2f + Vector3.left * 0.5f, 3.0f * Time.deltaTime) ;
+            
             yield return new WaitForSecondsRealtime(0.01f);
-            shortDis = Vector3.Distance(character.transform.position, enemy.transform.position);
+            Distance = Monster.transform.position.x - character.transform.position.x;
         }      
         chr_animator.SetBool("Move", false);
         //#5. 공격 완료 후 카드를 다시 뒤집기 위해 메세지 전달
@@ -67,7 +71,7 @@ public class Character : MonoBehaviour
             Debug.LogFormat("{0} Attacking",character.name);
             attackCount += 1;
             yield return new WaitForSecondsRealtime(0.6f);
-            Attack_Slime();
+            Attack_Monster();
         }
         chr_animator.SetBool("Attack", false);
         //#5. 공격 완료 후 카드를 다시 뒤집기 위해 메세지 전달, solider인 경우 뒤로 움직인 후에 메세지 전달
@@ -83,35 +87,26 @@ public class Character : MonoBehaviour
     IEnumerator Character_Moving_Back()
     {
         chr_animator.SetBool("Move", true);
-        while (character.transform.position.x >= firstX)
+        float Distance = Vector3.Distance(character.transform.position, first_position);
+        while (Distance > 0) 
         {
-            character.transform.position -= Vector3.right * 5.0f * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, first_position, 3.0f * Time.deltaTime);
             yield return new WaitForSecondsRealtime(0.01f);
+            Distance = Vector3.Distance(character.transform.position, first_position);
         }
         chr_animator.SetBool("Move", false);
         //#5. 공격 완료 후 카드를 다시 뒤집기 위해 메세지 전달
         GameObject.Find("Deck").GetComponent<RandomSelect>().SendMessage("ResetAnimation_Success", success_card_set);
     }
 
-    void Attack_Slime()
+    void Attack_Monster()
     {
         object[] skill_info = new object[4];
         skill_info[0] = DAMAGE_1_Tier;
         skill_info[1] = DAMAGE_2_Tier;
         skill_info[2] = DAMAGE_3_Tier;
         skill_info[3] = skill_Tier;
-        if (character.name == "Soldier")
-        {
-            GameObject.Find("Slime1").GetComponent<Slime>().SendMessage("damaged_start",skill_info);
-        }
-        else if(character.name == "Archer") 
-        {
-            GameObject.Find("Slime2").GetComponent<Slime>().SendMessage("damaged_start", skill_info);
-        }
-        else if (character.name == "Mage")
-        {
-            GameObject.Find("Slime3").GetComponent<Slime>().SendMessage("damaged_start", skill_info);
-        }
+        Monster.GetComponent<Slime>().SendMessage("damaged_start", skill_info);
 
 
 
