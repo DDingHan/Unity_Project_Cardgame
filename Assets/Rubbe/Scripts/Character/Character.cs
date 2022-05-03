@@ -18,7 +18,7 @@ public class Character : MonoBehaviour
     public int DAMAGE_3_Tier = 30;
     public float skill_Tier;
 
-    int damaged_count = 0;
+    //int damaged_count = 0;
 
     private void Start()
     {

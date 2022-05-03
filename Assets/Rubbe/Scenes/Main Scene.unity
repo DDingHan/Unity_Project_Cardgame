@@ -612,7 +612,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &624964491
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1036,8 +1036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slime: {fileID: 712444452}
-  character: {fileID: 0}
-  firstX: 0
+  Player: {fileID: 0}
   HP: 50
   DAMAGE: 10
   Player_Skill_Tier: 0
@@ -1158,8 +1157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slime: {fileID: 801437035}
-  character: {fileID: 0}
-  firstX: 0
+  Player: {fileID: 0}
   HP: 50
   DAMAGE: 10
   Player_Skill_Tier: 0
@@ -2461,8 +2459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slime: {fileID: 1578185625}
-  character: {fileID: 0}
-  firstX: 0
+  Player: {fileID: 0}
   HP: 50
   DAMAGE: 10
   Player_Skill_Tier: 0

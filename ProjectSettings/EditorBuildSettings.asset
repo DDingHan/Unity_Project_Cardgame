@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Rubbe/Scenes/Menu Scene.unity
     guid: 3ac39862d9b065545b9aa5c8e7c22723
+  - enabled: 1
+    path: Assets/Rubbe/Map/World Map.unity
+    guid: 8c924220005012c459ba77b8edd1b0c2
   m_configObjects: {}

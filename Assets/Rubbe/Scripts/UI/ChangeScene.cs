@@ -38,4 +38,9 @@ public class ChangeScene : MonoBehaviour
         Debug.Log("³¡");
         SceneManager.LoadScene("Main Scene");
     }
+
+    public void SceneChange_WorldMap()
+    {
+        SceneManager.LoadScene("World Map");
+    }
 }
