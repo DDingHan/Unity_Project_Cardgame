@@ -88,7 +88,7 @@ public class RandomSelect : MonoBehaviour
         CardUIList[secondCardIndex].SendMessage("Saving_Second", success_card_set);
         if (!GameObject.Find("Screen_Effect").GetComponent<FeverTime>().isFeverTime)
         {
-            slider.value += 0.1f;
+            slider.value += 1.0f;
             if (slider.value == 1)
             {
                 GameObject.Find("Screen_Effect").GetComponent<FeverTime>().SendMessage("Screen_Effect");

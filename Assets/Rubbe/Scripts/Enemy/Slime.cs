@@ -12,28 +12,13 @@ public class Slime : MonoBehaviour
     public int DAMAGE = 10;
     public float Player_Skill_Tier;
     public int Player_Skill_Damage;
+    public int Monster_index;
 
     private void Start()
     {
         slime_animator = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        //예시용으로 A,S,D를 눌렀을때 슬라임 공격 발동
-        if (Input.GetKeyDown(KeyCode.A) && slime.name == "Slime1")
-        {
-            StartCoroutine(Slime_Moving());
-        }
-        else if (Input.GetKeyDown(KeyCode.S) && slime.name == "Slime2")
-        {
-            StartCoroutine(Slime_Moving());
-        }
-        else if (Input.GetKeyDown(KeyCode.D) && slime.name == "Slime3")
-        {
-            StartCoroutine(Slime_Moving());
-        }
-    }
 
     void damaged_start(object[] skill_info)
     {
@@ -53,11 +38,20 @@ public class Slime : MonoBehaviour
         }
     }
 
+    void Monster_Start(int index)
+    {
+        Monster_index = index;
+        StartCoroutine(Slime_Moving());
+    }
     IEnumerator Slime_Moving()
     {
         first_position = slime.transform.position;
-        int Player_index = Random.Range(0,3);
-        Player = GameObject.Find("Player").transform.GetChild(Player_index).gameObject;
+        do
+        {
+            int Player_index = Random.Range(0, 3);
+            Player = GameObject.Find("Player").transform.GetChild(Player_index).gameObject;
+        } while (Player.GetComponent<Character>().chr_Died);
+        
         Debug.Log(Player.name);
         float Distance = slime.transform.position.x - Player.transform.position.x;
         while (Distance > 0.5f)
@@ -92,6 +86,12 @@ public class Slime : MonoBehaviour
             yield return new WaitForSecondsRealtime(0.01f);
             Distance = Vector3.Distance(slime.transform.position, first_position);
         }
+        Invoke("SendMessage_MonsterIndex", 1.0f);
+    }
+
+    void SendMessage_MonsterIndex()
+    {
+        GameObject.Find("Turn").GetComponent<Turn>().SendMessage("Monster_Attack", Monster_index + 1);
     }
 
     void Attack_Slime()

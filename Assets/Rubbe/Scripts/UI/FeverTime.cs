@@ -41,6 +41,7 @@ public class FeverTime : MonoBehaviour
             else
             {
                 isFeverTime = false;
+                GameObject.Find("Timer").GetComponent<Timer>().timer = true;   //피버타임 끝나면 타이머 다시 시작
             }
         }
     }
@@ -48,6 +49,7 @@ public class FeverTime : MonoBehaviour
     void Screen_Effect()
     {
         isFeverTime = true;
+        GameObject.Find("Timer").GetComponent<Timer>().timer = false; //피버타임시 타이머 일시정지
         StartCoroutine(ShowScreenEffect());
         StartCoroutine(ShowFeverText());
         GetRandomNum_6();

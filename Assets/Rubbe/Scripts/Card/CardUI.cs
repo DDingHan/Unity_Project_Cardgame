@@ -33,8 +33,13 @@ public class CardUI : MonoBehaviour, IPointerDownHandler
     // 카드가 클릭되면 뒤집는 애니메이션 재생
     public void OnPointerDown(PointerEventData eventData)
     {
+        //상대 턴에서 사용할 수 있는 횟수를 모두 사용한 경우
+        if(GameObject.Find("Count").GetComponent<Count>().now_count >= GameObject.Find("Count").GetComponent<Count>().total_count)
+        {
+            Debug.Log("사용할 수 있는 횟수를 모두 사용하였습니다.");
+        }
         //처음 카드를 선택했을 때 내 정보를 랜덤 셀렉터의 변수에 집어넣음.
-        if (GameObject.Find("Deck").GetComponent<RandomSelect>().Checking_Clicked_Card == false)
+        else if (GameObject.Find("Deck").GetComponent<RandomSelect>().Checking_Clicked_Card == false)
         {
             card_animator.SetTrigger("Flip");
             GameObject.Find("Deck").GetComponent<RandomSelect>().Checking_Clicked_Card = true;
@@ -52,8 +57,18 @@ public class CardUI : MonoBehaviour, IPointerDownHandler
             }
 
             card_animator.SetTrigger("Flip");
-            //카드 두 짝이 맞았을 때 작동. 카드 뒤집고 카드 내용을 바꿈.
-            if (GameObject.Find("Deck").GetComponent<RandomSelect>().CardName == cardName.text)
+            //타이머가 종료되면 활성화 x 뒤집기만 가능,
+            if (GameObject.Find("Timer").GetComponent<Timer>().timer == false)
+            {
+                Debug.Log("타이머가 종료되어 활성화 x");
+                GameObject.Find("Count").GetComponent<Count>().now_count++;
+                GameObject.Find("Deck").GetComponent<RandomSelect>().Checking_Clicked_Card = false;
+                GameObject.Find("Deck").GetComponent<RandomSelect>().CardName = "";
+                GameObject.Find("Deck").GetComponent<RandomSelect>().secondCardIndex = cardIndex;
+                GameObject.Find("Deck").GetComponent<RandomSelect>().SendMessage("StartReset");
+            }
+            //내 턴 일때 카드 두 짝이 맞았을 때 작동. 카드 뒤집고 카드 내용을 바꿈.
+            else if (GameObject.Find("Deck").GetComponent<RandomSelect>().CardName == cardName.text)
             {
                 //완성된 카드셋이 지금 없을때
                 if (!GameObject.Find("Deck").GetComponent<RandomSelect>().successCardSet)
