@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class ChangeScene : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class ChangeScene : MonoBehaviour
     public Image Panel;
     float time = 0f;
     float F_time = 1f;
+    public TextMeshProUGUI stageText;
+    public GameObject Map;
 
 
     public void SceneChange()
@@ -36,8 +39,46 @@ public class ChangeScene : MonoBehaviour
         }
         yield return null;
         Debug.Log("끝");
+        //Invoke("appearStageText", 1);
+        Invoke("afterDelay", 1);
+        //SceneManager.LoadScene("Main Scene");
+    }
+
+    private void afterDelay()
+    {
+        stageText.text = Map.name;
+        StartCoroutine(appearStageText());
+    }
+
+    IEnumerator appearStageText()
+    {
+        Debug.Log("스테이지 생성 시작");
+        time = 0f;
+        F_time = 1f;
+        Color alpha = stageText.color;
+        while (alpha.a < 1f)
+        {
+            time += Time.deltaTime / F_time;
+            alpha.a = Mathf.Lerp(0, 1, time);
+            stageText.color = alpha;
+            yield return null;
+        }
+        while (alpha.a > 0f)
+        {
+            time -= Time.deltaTime / F_time;
+            alpha.a = Mathf.Lerp(0, 1, time);
+            stageText.color = alpha;
+            yield return null;
+        }
+        Invoke("SceneChange_Stage", 0.5f);
+    }
+
+    //public void 
+    public void SceneChange_Stage()
+    {
         SceneManager.LoadScene("Main Scene");
     }
+
 
     public void SceneChange_WorldMap()
     {
