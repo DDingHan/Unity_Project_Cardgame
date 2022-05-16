@@ -43,7 +43,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 12
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 9a8db074386976f41b5f51c3cd13887f, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -118,6 +118,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
@@ -249,30 +251,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deck:
   - cardName: "\uACF0\uB3CC\uC774"
-    cardImage: {fileID: -4153777517944550443, guid: 25512b88008fb874c914931aef5a5ac4,
-      type: 3}
+    cardImage: {fileID: -4153777517944550443, guid: 25512b88008fb874c914931aef5a5ac4, type: 3}
     weight: 1
+    character: {fileID: 0}
   - cardName: "\uACF0\uC21C\uC774"
-    cardImage: {fileID: 7445541819068948944, guid: 25512b88008fb874c914931aef5a5ac4,
-      type: 3}
+    cardImage: {fileID: 7445541819068948944, guid: 25512b88008fb874c914931aef5a5ac4, type: 3}
     weight: 5
+    character: {fileID: 0}
   - cardName: "\uACF0\uD0F1\uC774"
-    cardImage: {fileID: -2393091842410444728, guid: 25512b88008fb874c914931aef5a5ac4,
-      type: 3}
+    cardImage: {fileID: -2393091842410444728, guid: 25512b88008fb874c914931aef5a5ac4, type: 3}
     weight: 25
+    character: {fileID: 0}
   - cardName: "\uACF0\uBB38\uACF0\uBB38\uACF0\uBB38"
-    cardImage: {fileID: 1498201808917496599, guid: 25512b88008fb874c914931aef5a5ac4,
-      type: 3}
+    cardImage: {fileID: 1498201808917496599, guid: 25512b88008fb874c914931aef5a5ac4, type: 3}
     weight: 39
+    character: {fileID: 0}
   - cardName: "\uACF0\uACF0\uACF0"
-    cardImage: {fileID: 7845443283589397662, guid: 25512b88008fb874c914931aef5a5ac4,
-      type: 3}
+    cardImage: {fileID: 7845443283589397662, guid: 25512b88008fb874c914931aef5a5ac4, type: 3}
     weight: 30
+    character: {fileID: 0}
   total: 0
   result: []
   parent: {fileID: 2038896264}
-  cardprefab: {fileID: 878384543158946410, guid: 75cb612308941fe4ca50b9b4244ad8a6,
-    type: 3}
+  cardprefab: {fileID: 878384543158946410, guid: 75cb612308941fe4ca50b9b4244ad8a6, type: 3}
+  Checking_Clicked_Card: 0
+  successCardSet: 0
+  CardName: 
+  firstCardIndex: 0
+  secondCardIndex: 0
+  CardUIList: []
+  img_live: {fileID: 0}
+  img_die: {fileID: 0}
+  slider: {fileID: 0}
 --- !u!1 &2038896263
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,6 +360,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -495,6 +507,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &2130449785
 Canvas:
   m_ObjectHideFlags: 0

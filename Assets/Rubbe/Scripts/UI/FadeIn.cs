@@ -9,20 +9,12 @@ public class FadeIn : MonoBehaviour
 
     public Image Panel;
     float time = 0f;
-    float F_time = 2f;
-
+    public float F_time = 2f;
 
     void Start()
     {
         StartCoroutine(FadeInImage());
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     IEnumerator FadeInImage()
     {
         Panel.gameObject.SetActive(true);
@@ -36,7 +28,8 @@ public class FadeIn : MonoBehaviour
             //Debug.Log("³¡");
         }
         yield return null;
-        Debug.Log("³¡");
+        //Debug.Log("³¡");
         Panel.gameObject.SetActive(false);
     }
+
 }

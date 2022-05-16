@@ -6,7 +6,7 @@ public class Slime : MonoBehaviour
 {
     public GameObject slime;
     public GameObject Player;
-    Vector3 first_position;
+    public Vector3 first_position;
     Animator slime_animator;
     public int HP = 50;
     public int DAMAGE = 10;
@@ -45,7 +45,6 @@ public class Slime : MonoBehaviour
     }
     IEnumerator Slime_Moving()
     {
-        first_position = slime.transform.position;
         do
         {
             int Player_index = Random.Range(0, 3);
@@ -111,6 +110,21 @@ public class Slime : MonoBehaviour
         //씬에서 삭제하는것 대신에 비활성화(index문제)
         //새로운 맵으로 넘어갈때는 전부 삭제하고 다시 몬스터 채우기
         slime.SetActive(false);
-        GameObject.Find("Cursor").GetComponent<Cursor_Move>().Destroy_count++;
+    }
+
+    void FirstMove()
+    {
+        StartCoroutine(Monster_FirstMoving());
+    }
+
+    IEnumerator Monster_FirstMoving()
+    {
+        float Distance = Vector3.Distance(slime.transform.position, first_position);
+        while (Distance > 0)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, first_position, 3.0f * Time.deltaTime);
+            yield return new WaitForSecondsRealtime(0.01f);
+            Distance = Vector3.Distance(slime.transform.position, first_position);
+        }
     }
 }

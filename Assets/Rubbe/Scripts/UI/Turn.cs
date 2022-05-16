@@ -5,15 +5,18 @@ using UnityEngine.UI;
 
 public class Turn : MonoBehaviour
 {
+    public Image Panel;
     public Text turnTxt;
     public bool myTurn;
+    public bool clear;
     public GameObject Monsters;
     public int Monster_count;
     void Start()
     {
-        myTurn = true;
-        Monsters = GameObject.Find("Monster");
+        turnTxt.gameObject.SetActive(false);
         Monster_count = Monsters.transform.childCount;
+        myTurn = true;
+        clear = false;
     }
 
     void Update()
@@ -26,7 +29,26 @@ public class Turn : MonoBehaviour
         {
             turnTxt.text = "Enemy Turn";
         }
+        //모든 몬스터가 죽었을 때
+        if (Count_Active_Monster() == 0 && clear == true)
+        {
+            Debug.Log("모든 몬스터 소멸 & 타이머 종료");
+            GameObject.Find("Timer").GetComponent<Timer>().timer = false;
+            turnTxt.gameObject.SetActive(false);
+            GameObject.Find("ReadyStart").GetComponent<ReadyStart>().SendMessage("Victory");
+            clear = false;
+        }       
 
+    }
+
+    int Count_Active_Monster()
+    {
+        int count = 0;
+        for (int i = 0; i < Monsters.transform.childCount; i++)
+        {
+            if (Monsters.transform.GetChild(i).gameObject.activeSelf == true) count++;
+        }
+        return count;
     }
 
     void ChangeTurn()

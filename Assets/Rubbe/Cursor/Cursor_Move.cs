@@ -5,7 +5,7 @@ using UnityEngine;
 public class Cursor_Move : MonoBehaviour
 {
     public int now_index;
-    public GameObject Monster;
+    public GameObject Monsters;
     public GameObject[] Monster_child;
     public int Monster_count;
     public int Destroy_count=0;
@@ -13,7 +13,7 @@ public class Cursor_Move : MonoBehaviour
     void Start()
     {
         now_index = 0;
-        Monster_child = GetChildren(Monster);
+        Monster_child = GetChildren(Monsters);
         Monster_count = Monster_child.Length;
 
         Move(now_index);
@@ -23,10 +23,14 @@ public class Cursor_Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //실시간으로 죽은 몬스터 count
+        Destroy_count = Count_Destroy_Monster();
+
         //몬스터가 없을 경우 커서 삭제
         if(Destroy_count == Monster_count)
         {
             gameObject.SetActive(false);
+            GameObject.Find("Turn").GetComponent<Turn>().clear = true;
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -41,7 +45,6 @@ public class Cursor_Move : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             //위 화살표를 눌렀을 경우 위로 이동
-            Debug.Log(now_index);
             do
             {
                 now_index--;
@@ -59,6 +62,16 @@ public class Cursor_Move : MonoBehaviour
             } while (Monster_child[now_index].gameObject.activeSelf == false);
         }
         Move(now_index);
+    }
+
+    int Count_Destroy_Monster()
+    {
+        int count = 0;
+        for (int i = 0; i < Monsters.transform.childCount; i++)
+        {
+            if (Monsters.transform.GetChild(i).gameObject.activeSelf == false) count++;
+        }
+        return count;
     }
 
     void Move(int index)

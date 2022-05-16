@@ -76,7 +76,7 @@ public class ChangeScene : MonoBehaviour
     //public void 
     public void SceneChange_Stage()
     {
-        SceneManager.LoadScene("Main Scene");
+        SceneManager.LoadScene("1.Battle scene");
     }
 
 

@@ -12,8 +12,8 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
-        timer = true;
-        time = first_time + 1;
+        timer = false;
+        time = first_time;
     }
 
     void Update()
@@ -35,5 +35,6 @@ public class Timer : MonoBehaviour
         time = first_time+1;
         timer = true;
     }
+
 
 }

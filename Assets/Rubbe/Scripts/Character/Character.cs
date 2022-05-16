@@ -8,7 +8,7 @@ public class Character : MonoBehaviour
     public GameObject Monster;
     Animator chr_animator;
     object[] success_card_set = new object[2];
-    Vector3 first_position;
+    public Vector3 first_position;
     bool isSolider = false;
     public bool chr_Died = false;
 
@@ -27,7 +27,7 @@ public class Character : MonoBehaviour
     //#4-1. solider일때만 움직이고 공격후 다시 원위치로 오기
     void Move(object[] index)
     {
-        first_position = character.transform.position;
+        //first_position = character.transform.position;
         isSolider = true;
         success_card_set[0] = index[0];
         success_card_set[1] = index[1];
@@ -36,7 +36,7 @@ public class Character : MonoBehaviour
     }
 
     //#4 0.6초에 한번씩 공격 반복 (설정한 공격 횟수만큼 반복)
-    void Attack(object[] index)    
+    void Attack(object[] index)
     {
         success_card_set[0] = index[0];
         success_card_set[1] = index[1];
@@ -50,14 +50,14 @@ public class Character : MonoBehaviour
         chr_animator.SetBool("Move", true);
         int Monster_index = GameObject.Find("Cursor").GetComponent<Cursor_Move>().now_index;
         Monster = GameObject.Find("Monster").transform.GetChild(Monster_index).gameObject;
-        float Distance = Monster.transform.position.x -character.transform.position.x;
+        float Distance = Monster.transform.position.x - character.transform.position.x;
         while (Distance > 0.5f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, Monster.transform.position + Vector3.down * 0.2f + Vector3.left * 0.5f, 3.0f * Time.deltaTime) ;
-            
+            transform.position = Vector3.MoveTowards(transform.position, Monster.transform.position + Vector3.down * 0.2f + Vector3.left * 0.5f, 3.0f * Time.deltaTime);
+
             yield return new WaitForSecondsRealtime(0.01f);
             Distance = Monster.transform.position.x - character.transform.position.x;
-        }      
+        }
         chr_animator.SetBool("Move", false);
         //#5. 공격 완료 후 카드를 다시 뒤집기 위해 메세지 전달
         StartCoroutine(Character_Attacking());
@@ -67,8 +67,8 @@ public class Character : MonoBehaviour
         chr_animator.SetBool("Attack", true);
         int attackCount = 1;
         while (attackCount <= 1)
-        {            
-            Debug.LogFormat("{0} Attacking",character.name);
+        {
+            Debug.LogFormat("{0} Attacking", character.name);
             attackCount += 1;
             yield return new WaitForSecondsRealtime(0.6f);
             Attack_Monster();
@@ -88,7 +88,7 @@ public class Character : MonoBehaviour
     {
         chr_animator.SetBool("Move", true);
         float Distance = Vector3.Distance(character.transform.position, first_position);
-        while (Distance > 0) 
+        while (Distance > 0)
         {
             transform.position = Vector3.MoveTowards(transform.position, first_position, 3.0f * Time.deltaTime);
             yield return new WaitForSecondsRealtime(0.01f);
@@ -141,7 +141,7 @@ public class Character : MonoBehaviour
     void damaged_end()
     {
         chr_animator.SetBool("Damaged", false);
-        if(HP <= 0)
+        if (HP <= 0)
         {
             Character_Die();
         }
@@ -154,5 +154,21 @@ public class Character : MonoBehaviour
         chr_Died = true;
         //죽은 다음에 해당 캐릭터의 카드는 회색으로 변경
         GameObject.Find("Deck").GetComponent<RandomSelect>().SendMessage("ChangeCard_Chracter_Die", character.name);
+    }
+
+    void FirstMove()
+    {
+        StartCoroutine(Character_FirstMoving());
+    }
+
+    IEnumerator Character_FirstMoving()
+    {
+        float Distance = Vector3.Distance(character.transform.position, first_position);
+        while (Distance > 0)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, first_position, 3.0f * Time.deltaTime);
+            yield return new WaitForSecondsRealtime(0.01f);
+            Distance = Vector3.Distance(character.transform.position, first_position);
+        }
     }
 }
