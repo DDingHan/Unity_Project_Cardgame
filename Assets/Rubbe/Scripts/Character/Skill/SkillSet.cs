@@ -167,9 +167,10 @@ public class SkillSet : MonoBehaviour
         Invoke("TakeDamage", 0.7f);
     }
 
+    public GameObject cursor;
     void TakeDamage()
     {
-        GameObject hudText = Instantiate(hudDamageText);
+        GameObject hudText = Instantiate(hudDamageText,cursor.transform.position,hudDamageText.transform.rotation);
         hudText.GetComponent<DamageText>().damage = 5;
     }
 }

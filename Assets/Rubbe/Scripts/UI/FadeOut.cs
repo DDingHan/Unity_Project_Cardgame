@@ -18,6 +18,7 @@ public class FadeOut : MonoBehaviour
         Color alpha = Panel.color;
         alpha.a = 0f;
         Panel.color = alpha;
+        Panel.gameObject.SetActive(false);
     }
 
     public void SceneChange()
@@ -26,6 +27,7 @@ public class FadeOut : MonoBehaviour
     }
     IEnumerator FadeOutImage()
     {
+        //Panel.gameObject.SetActive(true);
         Color alpha = Panel.color;
         while (alpha.a < 1f)
         {

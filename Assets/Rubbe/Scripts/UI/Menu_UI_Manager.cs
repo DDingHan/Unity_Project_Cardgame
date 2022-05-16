@@ -13,7 +13,18 @@ public class Menu_UI_Manager : MonoBehaviour
 
     void Start()
     {
-        
+        if (GameObject.Find("GameData").GetComponent<Data>().mapName != "" && GameObject.Find("GameData").GetComponent<Data>().stageNum != "")
+        {
+            GameObject[] stages = GameObject.FindGameObjectsWithTag("Stage");
+
+            foreach(GameObject a in stages)
+            {
+                if(a.name == GameObject.Find("GameData").GetComponent<Data>().stageNum)
+                {
+                    a.GetComponent<SpriteRenderer>().color = Color.black;
+                }
+            }
+        }
     }
 
     // Update is called once per frame

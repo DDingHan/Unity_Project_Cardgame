@@ -61,10 +61,11 @@ public class ReadyStart : MonoBehaviour
             yield return null;
         }
     }
-
+    public GameObject fadeOut;
     void SceneChange()
     {
         Ready_Start_Txt.gameObject.SetActive(false);
+        fadeOut.SetActive(true);
         GameObject.Find("FadeOut").GetComponent<FadeOut>().SendMessage("SceneChange");
     }
 }

@@ -18,6 +18,7 @@ public class ChangeScene : MonoBehaviour
     float F_time = 1f;
     public TextMeshProUGUI stageText;
     public GameObject Map;
+    public string stageNum;
 
 
     public void SceneChange()
@@ -47,6 +48,11 @@ public class ChangeScene : MonoBehaviour
     private void afterDelay()
     {
         stageText.text = Map.name;
+        stageText.text = stageText.text + "\n" + "Stage"+ stageNum;
+
+        GameObject.Find("GameData").GetComponent<Data>().SendMessage("setMapName", Map.name);
+        GameObject.Find("GameData").GetComponent<Data>().SendMessage("setStageNum", stageNum);
+
         StartCoroutine(appearStageText());
     }
 
