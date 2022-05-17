@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slime : MonoBehaviour
+public class Mushroom : MonoBehaviour
 {
-    public GameObject slime;
+    public GameObject mushroom;
     public GameObject Player;
-    Animator slime_animator;
+    Animator Mushroom_animator;
     public int HP = 50;
     public int DAMAGE = 10;
     public float Player_Skill_Tier;
@@ -17,7 +17,7 @@ public class Slime : MonoBehaviour
 
     private void Start()
     {
-        slime_animator = GetComponent<Animator>();
+        Mushroom_animator = GetComponent<Animator>();
     }
 
 
@@ -26,25 +26,26 @@ public class Slime : MonoBehaviour
         Player_Skill_Tier = (float)skill_info[3];
         Player_Skill_Damage = (int)skill_info[(int)Player_Skill_Tier - 1];
         Debug.LogFormat("{0} Tier Damaged! ({1})", Player_Skill_Tier, Player_Skill_Damage);
-        slime_animator.SetBool("Damaged", true);
+        Mushroom_animator.SetBool("Damaged", true);
         HP -= Player_Skill_Damage;
         Invoke("damaged_end", 0.2f);
     }
     void damaged_end()
     {
-        slime_animator.SetBool("Damaged", false);
+        Mushroom_animator.SetBool("Damaged", false);
         if (HP <= 0)
         {
-            Invoke("Slime_Die", 1.0f);
+            Invoke("Mushroom_Die", 1.0f);
         }
     }
 
     void Monster_Start(int index)
     {
         Monster_index = index;
-        StartCoroutine(Slime_Moving());
+        Mushroom_animator.SetBool("Move", true);
+        StartCoroutine(Mushroom_Moving());
     }
-    IEnumerator Slime_Moving()
+    IEnumerator Mushroom_Moving()
     {
         do
         {
@@ -53,39 +54,43 @@ public class Slime : MonoBehaviour
         } while (Player.GetComponent<Character>().chr_Died);
         
         Debug.Log(Player.name);
-        float Distance = slime.transform.position.x - Player.transform.position.x;
+        float Distance = mushroom.transform.position.x - Player.transform.position.x;
         while (Distance > 0.5f)
         {
-            transform.position = Vector3.MoveTowards(slime.transform.position, Player.transform.position + Vector3.up * 0.2f + Vector3.right * 0.5f, 3.0f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(mushroom.transform.position, Player.transform.position + Vector3.up * 0.2f + Vector3.right * 0.5f, 3.0f * Time.deltaTime);
             yield return new WaitForSecondsRealtime(0.01f);
-            Distance = slime.transform.position.x - Player.transform.position.x;
+            Distance = mushroom.transform.position.x - Player.transform.position.x;
         }
-
-        StartCoroutine(Slime_Attacking());
+        Mushroom_animator.SetBool("Move", false);
+        Mushroom_animator.SetBool("Attack", true);
+        StartCoroutine(Mushroom_Attacking());
     }
     
-    IEnumerator Slime_Attacking()
+    IEnumerator Mushroom_Attacking()
     {
-        int slime_attackCount = 1;
-        while (slime_attackCount <= 1)
+        int Mushroom_attackCount = 1;
+        while (Mushroom_attackCount <= 1)
         {
-            Attack_Slime();
-            Debug.LogFormat("Slime_Attackcount = {0}", slime_attackCount);
-            slime_attackCount += 1;
+            Attack_Mushroom();
+            Debug.LogFormat("Mushroom_Attackcount = {0}", Mushroom_attackCount);
+            Mushroom_attackCount += 1;
             yield return new WaitForSecondsRealtime(0.6f);
         }
-        StartCoroutine(Slime_Moving_Back());
+        Mushroom_animator.SetBool("Attack", false);
+        Mushroom_animator.SetBool("Move", true);
+        StartCoroutine(Mushroom_Moving_Back());
     }
 
-    IEnumerator Slime_Moving_Back()
+    IEnumerator Mushroom_Moving_Back()
     {
-        float Distance = Vector3.Distance(slime.transform.position, first_position);
+        float Distance = Vector3.Distance(mushroom.transform.position, first_position);
         while (Distance > 0)
         {
             transform.position = Vector3.MoveTowards(transform.position, first_position, 3.0f * Time.deltaTime);
             yield return new WaitForSecondsRealtime(0.01f);
-            Distance = Vector3.Distance(slime.transform.position, first_position);
+            Distance = Vector3.Distance(mushroom.transform.position, first_position);
         }
+        Mushroom_animator.SetBool("Move", false);
         Invoke("SendMessage_MonsterIndex", 1.0f);
     }
 
@@ -94,39 +99,41 @@ public class Slime : MonoBehaviour
         GameObject.Find("Turn").GetComponent<Turn>().SendMessage("Monster_Attack", Monster_index + 1);
     }
 
-    void Attack_Slime()
+    void Attack_Mushroom()
     {
         Player.GetComponent<Character>().SendMessage("damaged_start",DAMAGE);
     }
 
-    void Slime_Die()
+    void Mushroom_Die()
     {
-        Debug.Log(slime.name + " Die");
-        slime_animator.SetBool("Die", true);
-        Invoke("Destory_Slime", 1.0f);
+        Debug.Log(mushroom.name + " Die");
+        Mushroom_animator.SetBool("Die", true);
+        Invoke("Destory_Mushroom", 1.0f);
     }
     
-    void Destory_Slime()
+    void Destory_Mushroom()
     {
         //씬에서 삭제하는것 대신에 비활성화(index문제)
         //새로운 맵으로 넘어갈때는 전부 삭제하고 다시 몬스터 채우기
-        slime.SetActive(false);
+        mushroom.SetActive(false);
     }
 
     void FirstMove(float x)
     {
-        first_position = slime.transform.position + Vector3.left*x;
+        first_position = mushroom.transform.position + Vector3.left*x;
+        Mushroom_animator.SetBool("Move", true);
         StartCoroutine(Monster_FirstMoving());
     }
 
     IEnumerator Monster_FirstMoving()
     {
-        float Distance = Vector3.Distance(slime.transform.position, first_position);
+        float Distance = Vector3.Distance(mushroom.transform.position, first_position);
         while (Distance > 0)
         {
             transform.position = Vector3.MoveTowards(transform.position, first_position, 3.0f * Time.deltaTime);
             yield return new WaitForSecondsRealtime(0.01f);
-            Distance = Vector3.Distance(slime.transform.position, first_position);
+            Distance = Vector3.Distance(mushroom.transform.position, first_position);
         }
+        Mushroom_animator.SetBool("Move", false);
     }
 }
