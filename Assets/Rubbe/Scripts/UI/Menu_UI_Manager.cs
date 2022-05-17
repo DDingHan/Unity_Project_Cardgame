@@ -11,17 +11,29 @@ public class Menu_UI_Manager : MonoBehaviour
     public GameObject menuUI;
     bool menuUIActive = false;
 
+    public GameObject[] stages;
+
     void Start()
     {
         if (GameObject.Find("GameData").GetComponent<Data>().mapName != "" && GameObject.Find("GameData").GetComponent<Data>().stageNum != "")
         {
-            GameObject[] stages = GameObject.FindGameObjectsWithTag("Stage");
+            /*GameObject[] stages = GameObject.FindGameObjectsWithTag("Stage");
 
             foreach(GameObject a in stages)
             {
                 if(a.name == GameObject.Find("GameData").GetComponent<Data>().stageNum)
                 {
                     a.GetComponent<SpriteRenderer>().color = Color.black;
+                }
+            }*/
+            GameObject.Find("GameData").GetComponent<Data>().stageClearCheck[int.Parse(GameObject.Find("GameData").GetComponent<Data>().stageNum) - 1] = true;
+            GameObject[] stages = GameObject.FindGameObjectsWithTag("Stage");
+
+            for(int i=0; i < stages.Length; i++)
+            {
+                if (GameObject.Find("GameData").GetComponent<Data>().stageClearCheck[i] == true)
+                {
+                    stages[i].GetComponent<SpriteRenderer>().color = Color.blue;
                 }
             }
         }

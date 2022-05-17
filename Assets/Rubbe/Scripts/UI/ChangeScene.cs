@@ -20,15 +20,17 @@ public class ChangeScene : MonoBehaviour
     public GameObject Map;
     public string stageNum;
 
+    public bool sceneChageStart = false;
+
 
     public void SceneChange()
     {
-        //SceneManager.LoadScene("Main Scene");
         StartCoroutine(FadeFlow());
     }
     IEnumerator FadeFlow()
     {
         Panel.gameObject.SetActive(true);
+        stageText.gameObject.SetActive(true);
         Color alpha = Panel.color;
         while (alpha.a < 1f)
         {

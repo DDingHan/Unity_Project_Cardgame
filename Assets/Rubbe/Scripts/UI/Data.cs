@@ -29,4 +29,6 @@ public class Data : MonoBehaviour
     {
         stageNum = a;
     }
+
+    public bool[] stageClearCheck = { false, false, false, false, false, false, false, false };
 }
