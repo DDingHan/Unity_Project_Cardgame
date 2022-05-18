@@ -49,10 +49,10 @@ public class ChangeScene : MonoBehaviour
 
     private void afterDelay()
     {
-        stageText.text = Map.name;
-        stageText.text = stageText.text + "\n" + "Stage"+ stageNum;
+        stageText.text = Map.name.Substring(4);
+        stageText.text = stageText.text + " - " + stageNum;
 
-        GameObject.Find("GameData").GetComponent<Data>().SendMessage("setMapName", Map.name);
+        GameObject.Find("GameData").GetComponent<Data>().SendMessage("setMapName", Map.name.Substring(4));
         GameObject.Find("GameData").GetComponent<Data>().SendMessage("setStageNum", stageNum);
 
         StartCoroutine(appearStageText());

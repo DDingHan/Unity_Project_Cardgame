@@ -20,6 +20,12 @@ public class Skeleton : MonoBehaviour
         Skeleton_animator = GetComponent<Animator>();
     }
 
+    void setMaxHP(int a)
+    {
+        HP = a;
+        Debug.Log(HP);
+    }
+
 
     void damaged_start(object[] skill_info)
     {

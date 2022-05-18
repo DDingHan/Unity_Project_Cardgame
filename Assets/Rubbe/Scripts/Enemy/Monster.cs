@@ -9,6 +9,7 @@ public class Monster : MonoBehaviour
     public GameObject[] Monster_preb;
     public Vector3[] Monster_pos;
     public int stage_num;
+    public int map_num;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,8 @@ public class Monster : MonoBehaviour
 
         stage_num = int.Parse(GameObject.Find("GameData").GetComponent<Data>().stageNum);
 
+        map_num = int.Parse(GameObject.Find("GameData").GetComponent<Data>().mapName);
+
         init(stage_num);
         Invoke("FirstMove", 0.5f);
     }
@@ -31,39 +34,59 @@ public class Monster : MonoBehaviour
         {
             case 1:          
                 GameObject.Instantiate(Monster_preb[1], Monster_pos[2], Quaternion.identity).transform.parent = Monsters.transform;
+                Monsters.transform.GetChild(0).GetComponent<Slime>().SendMessage("setMaxHP", CalMinimalHP());
                 break;
             case 2:
                 GameObject.Instantiate(Monster_preb[1], Monster_pos[1], Quaternion.identity).transform.parent = Monsters.transform;
                 GameObject.Instantiate(Monster_preb[1], Monster_pos[3], Quaternion.identity).transform.parent = Monsters.transform;
+                Monsters.transform.GetChild(0).GetComponent<Slime>().SendMessage("setMaxHP", CalMinimalHP());
+                Monsters.transform.GetChild(1).GetComponent<Slime>().SendMessage("setMaxHP", CalMinimalHP());
                 break;
             case 3:
                 GameObject.Instantiate(Monster_preb[2], Monster_pos[2], Quaternion.identity).transform.parent = Monsters.transform;
                 GameObject.Instantiate(Monster_preb[1], Monster_pos[1], Quaternion.identity).transform.parent = Monsters.transform;
                 GameObject.Instantiate(Monster_preb[1], Monster_pos[3], Quaternion.identity).transform.parent = Monsters.transform;
+                Monsters.transform.GetChild(0).GetComponent<Goblin>().SendMessage("setMaxHP", CalSmallHP());
+                Monsters.transform.GetChild(1).GetComponent<Slime>().SendMessage("setMaxHP", CalMinimalHP());
+                Monsters.transform.GetChild(2).GetComponent<Slime>().SendMessage("setMaxHP", CalMinimalHP());
                 break;
             case 4:
                 GameObject.Instantiate(Monster_preb[3], Monster_pos[2], Quaternion.identity).transform.parent = Monsters.transform;
                 GameObject.Instantiate(Monster_preb[2], Monster_pos[1], Quaternion.identity).transform.parent = Monsters.transform;
                 GameObject.Instantiate(Monster_preb[2], Monster_pos[3], Quaternion.identity).transform.parent = Monsters.transform;
+                Monsters.transform.GetChild(0).GetComponent<Mushroom>().SendMessage("setMaxHP", CalMidiumHP());
+                Monsters.transform.GetChild(1).GetComponent<Goblin>().SendMessage("setMaxHP", CalSmallHP());
+                Monsters.transform.GetChild(2).GetComponent<Goblin>().SendMessage("setMaxHP", CalSmallHP());
                 break;
             case 5:
                 GameObject.Instantiate(Monster_preb[1], Monster_pos[2], Quaternion.identity).transform.parent = Monsters.transform;
                 GameObject.Instantiate(Monster_preb[2], Monster_pos[1], Quaternion.identity).transform.parent = Monsters.transform;
                 GameObject.Instantiate(Monster_preb[2], Monster_pos[3], Quaternion.identity).transform.parent = Monsters.transform;
+                Monsters.transform.GetChild(0).GetComponent<Slime>().SendMessage("setMaxHP", CalMinimalHP());
+                Monsters.transform.GetChild(1).GetComponent<Goblin>().SendMessage("setMaxHP", CalSmallHP());
+                Monsters.transform.GetChild(2).GetComponent<Goblin>().SendMessage("setMaxHP", CalSmallHP());
                 break;
             case 6:
                 GameObject.Instantiate(Monster_preb[2], Monster_pos[1], Quaternion.identity).transform.parent = Monsters.transform;
                 GameObject.Instantiate(Monster_preb[2], Monster_pos[2], Quaternion.identity).transform.parent = Monsters.transform;
                 GameObject.Instantiate(Monster_preb[2], Monster_pos[3], Quaternion.identity).transform.parent = Monsters.transform;
+                Monsters.transform.GetChild(0).GetComponent<Goblin>().SendMessage("setMaxHP", CalSmallHP());
+                Monsters.transform.GetChild(1).GetComponent<Goblin>().SendMessage("setMaxHP", CalSmallHP());
+                Monsters.transform.GetChild(2).GetComponent<Goblin>().SendMessage("setMaxHP", CalSmallHP());
                 break;
             case 7:
                 GameObject.Instantiate(Monster_preb[3], Monster_pos[3], Quaternion.identity).transform.parent = Monsters.transform;
                 GameObject.Instantiate(Monster_preb[2], Monster_pos[1], Quaternion.identity).transform.parent = Monsters.transform;
+                Monsters.transform.GetChild(0).GetComponent<Mushroom>().SendMessage("setMaxHP", CalMidiumHP());
+                Monsters.transform.GetChild(1).GetComponent<Goblin>().SendMessage("setMaxHP", CalSmallHP());
                 break;
             case 8:
                 GameObject.Instantiate(Monster_preb[4], Monster_pos[2], Quaternion.identity).transform.parent = Monsters.transform;
                 GameObject.Instantiate(Monster_preb[2], Monster_pos[1], Quaternion.identity).transform.parent = Monsters.transform;
                 GameObject.Instantiate(Monster_preb[2], Monster_pos[3], Quaternion.identity).transform.parent = Monsters.transform;
+                Monsters.transform.GetChild(0).GetComponent<Skeleton>().SendMessage("setMaxHP", CalBigHP());
+                Monsters.transform.GetChild(1).GetComponent<Goblin>().SendMessage("setMaxHP", CalSmallHP());
+                Monsters.transform.GetChild(2).GetComponent<Goblin>().SendMessage("setMaxHP", CalSmallHP());
                 break;
         }
     }
@@ -153,4 +176,70 @@ public class Monster : MonoBehaviour
         GameObject.Find("Turn").GetComponent<Turn>().SendMessage("ChangeTurn");
     }
 
+    int CalMinimalHP()
+    {
+        if (map_num == 1)
+        {
+            return 20;
+        }
+        else if(map_num == 2){
+            return 35;
+        }
+        else if (map_num == 3)
+        {
+            return 50;
+        }
+        return 1;
+    }
+
+    int CalSmallHP()
+    {
+        if (map_num == 1)
+        {
+            return 30;
+        }
+        else if (map_num == 2)
+        {
+            return 45;
+        }
+        else if (map_num == 3)
+        {
+            return 70;
+        }
+        return 1;
+    }
+
+    int CalMidiumHP()
+    {
+        if (map_num == 1)
+        {
+            return 50;
+        }
+        else if (map_num == 2)
+        {
+            return 70;
+        }
+        else if (map_num == 3)
+        {
+            return 90;
+        }
+        return 1;
+    }
+
+    int CalBigHP()
+    {
+        if (map_num == 1)
+        {
+            return 70;
+        }
+        else if (map_num == 2)
+        {
+            return 90;
+        }
+        else if (map_num == 3)
+        {
+            return 110;
+        }
+        return 1;
+    }
 }

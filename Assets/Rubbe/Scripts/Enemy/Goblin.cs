@@ -20,6 +20,12 @@ public class Goblin : MonoBehaviour
         Goblin_animator = GetComponent<Animator>();
     }
 
+    void setMaxHP(int a)
+    {
+        HP = a;
+        Debug.Log(HP);
+    }
+
 
     void damaged_start(object[] skill_info)
     {
