@@ -58,7 +58,7 @@ public class CardUI : MonoBehaviour, IPointerDownHandler
 
             card_animator.SetTrigger("Flip");
             //타이머가 종료되면 활성화 x 뒤집기만 가능,
-            if (GameObject.Find("Timer").GetComponent<Timer>().timer == false)
+            if (GameObject.Find("Timer").GetComponent<Timer>().timer == false&& !GameObject.Find("Screen_Effect").GetComponent<FeverTime>().isFeverTime)
             {
                 Debug.Log("타이머가 종료되어 활성화 x");
                 GameObject.Find("Count").GetComponent<Count>().now_count++;

@@ -53,6 +53,7 @@ public class Turn : MonoBehaviour
 
     void ChangeTurn()
     {
+        Debug.Log("체인지 턴");
         myTurn = !myTurn;
         if (myTurn)
         {

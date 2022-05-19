@@ -176,70 +176,70 @@ public class Monster : MonoBehaviour
         GameObject.Find("Turn").GetComponent<Turn>().SendMessage("ChangeTurn");
     }
 
-    int CalMinimalHP()
+    float CalMinimalHP()
     {
         if (map_num == 1)
         {
-            return 20;
+            return 20f;
         }
         else if(map_num == 2){
-            return 35;
+            return 35f;
         }
         else if (map_num == 3)
         {
-            return 50;
+            return 50f;
         }
-        return 1;
+        return 1f;
     }
 
-    int CalSmallHP()
+    float CalSmallHP()
     {
         if (map_num == 1)
         {
-            return 30;
+            return 30f;
         }
         else if (map_num == 2)
         {
-            return 45;
+            return 45f;
         }
         else if (map_num == 3)
         {
-            return 70;
+            return 70f;
         }
-        return 1;
+        return 1f;
     }
 
-    int CalMidiumHP()
+    float CalMidiumHP()
     {
         if (map_num == 1)
         {
-            return 50;
+            return 50f;
         }
         else if (map_num == 2)
         {
-            return 70;
+            return 70f;
         }
         else if (map_num == 3)
         {
-            return 90;
+            return 90f;
         }
-        return 1;
+        return 1f;
     }
 
-    int CalBigHP()
+    float CalBigHP()
     {
         if (map_num == 1)
         {
-            return 70;
+            return 70f;
         }
         else if (map_num == 2)
         {
-            return 90;
+            return 90f;
         }
         else if (map_num == 3)
         {
-            return 110;
+            return 110f;
         }
-        return 1;
+        return 1f;
     }
 }

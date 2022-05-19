@@ -7,7 +7,7 @@ public class Mushroom : MonoBehaviour
     public GameObject mushroom;
     public GameObject Player;
     Animator Mushroom_animator;
-    public int HP = 50;
+    public float HP = 50;
     public int DAMAGE = 10;
     public float Player_Skill_Tier;
     public int Player_Skill_Damage;
@@ -16,7 +16,7 @@ public class Mushroom : MonoBehaviour
     Vector3 first_position;
 
     public GameObject HPImage;
-    public int MaxHP = 0;
+    public float MaxHP = 0;
 
     private void Start()
     {
@@ -32,7 +32,7 @@ public class Mushroom : MonoBehaviour
         }
         if (MaxHP != 0)
         {
-            HPImage.transform.localScale.Set(Mathf.Lerp(0, 0.1f, (HP / MaxHP) / 10), 0.02f, 0.1f);
+            HPImage.transform.localScale = new Vector3((HP / MaxHP) / 10f, 0.02f, 0.1f);
         }
     }
 
