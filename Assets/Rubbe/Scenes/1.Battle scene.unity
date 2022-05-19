@@ -934,12 +934,13 @@ MonoBehaviour:
   Monsters: {fileID: 359720229}
   Monster_preb:
   - {fileID: 4085119950012879815, guid: bf4f71b2869d84b4fa1910ce1bab1987, type: 3}
-  - {fileID: 5889216496388104844, guid: 78aad450cc4f55f40b190803644df84c, type: 3}
-  - {fileID: 1440618247341062444, guid: 24cc37d1d4b8f094d8f9047ea425a015, type: 3}
-  - {fileID: 1844483741205386426, guid: ba5c8edc7177eb7449b4e86ecf499e19, type: 3}
-  - {fileID: 839432701839287229, guid: 900ef18e06550f74abef069f14663723, type: 3}
+  - {fileID: 5510624584876748685, guid: aed01018d86e8754993a670cc714b930, type: 3}
+  - {fileID: 2586380691892460718, guid: a4e740267eb3cb64a965f173c43deee6, type: 3}
+  - {fileID: 5173732499617814456, guid: edec3ff065250f74cb170690577f05e0, type: 3}
+  - {fileID: 6628818061323095640, guid: c992e979d5287404fbcf6035ceda6354, type: 3}
   Monster_pos: []
   stage_num: 8
+  map_num: 0
   monster: {fileID: 0}
   Monster_index: 0
 --- !u!1 &500409228 stripped

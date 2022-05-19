@@ -15,14 +15,31 @@ public class Mushroom : MonoBehaviour
     
     Vector3 first_position;
 
+    public GameObject HPImage;
+    public int MaxHP = 0;
+
     private void Start()
     {
         Mushroom_animator = GetComponent<Animator>();
     }
 
+    private void Update()
+    {
+        if (HP <= 0)
+        {
+            MaxHP = 0;
+            HPImage.SetActive(false);
+        }
+        if (MaxHP != 0)
+        {
+            HPImage.transform.localScale.Set(Mathf.Lerp(0, 0.1f, (HP / MaxHP) / 10), 0.02f, 0.1f);
+        }
+    }
+
     void setMaxHP(int a)
     {
         HP = a;
+        MaxHP = a;
         Debug.Log(HP);
     }
 
