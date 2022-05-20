@@ -78,13 +78,14 @@ public class Mushroom : MonoBehaviour
         
         Debug.Log(Player.name);
         float Distance = mushroom.transform.position.x - Player.transform.position.x;
-        while (Distance > 0.5f)
+        while (Distance > 0.8f)
         {
-            transform.position = Vector3.MoveTowards(mushroom.transform.position, Player.transform.position + Vector3.up * 0.2f + Vector3.right * 0.5f, 3.0f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(mushroom.transform.position, Player.transform.position + new Vector3(0.8f, 0.5f, -0.1f), 3.0f * Time.deltaTime);
             yield return new WaitForSecondsRealtime(0.01f);
             Distance = mushroom.transform.position.x - Player.transform.position.x;
         }
         Mushroom_animator.SetBool("Move", false);
+        yield return new WaitForSecondsRealtime(0.1f);
         Mushroom_animator.SetBool("Attack", true);
         StartCoroutine(Mushroom_Attacking());
     }
@@ -94,12 +95,14 @@ public class Mushroom : MonoBehaviour
         int Mushroom_attackCount = 1;
         while (Mushroom_attackCount <= 1)
         {
+            yield return new WaitForSecondsRealtime(1.0f);
             Attack_Mushroom();
             Debug.LogFormat("Mushroom_Attackcount = {0}", Mushroom_attackCount);
             Mushroom_attackCount += 1;
-            yield return new WaitForSecondsRealtime(0.6f);
+            yield return new WaitForSecondsRealtime(0.4f);
         }
         Mushroom_animator.SetBool("Attack", false);
+        yield return new WaitForSecondsRealtime(0.2f);
         Mushroom_animator.SetBool("Move", true);
         StartCoroutine(Mushroom_Moving_Back());
     }
@@ -119,7 +122,7 @@ public class Mushroom : MonoBehaviour
 
     void SendMessage_MonsterIndex()
     {
-        GameObject.Find("Turn").GetComponent<Turn>().SendMessage("Monster_Attack", Monster_index + 1);
+        GameObject.Find("Monster").GetComponent<Monster>().SendMessage("Monster_Attack", Monster_index + 1);
     }
 
     void Attack_Mushroom()
