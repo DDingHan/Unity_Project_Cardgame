@@ -20,9 +20,9 @@ public class Monster : MonoBehaviour
         Monster_pos[2] = new Vector3(2.5f, 3.0f, -0.1f);
         Monster_pos[3] = new Vector3(2.5f, 2.0f, -0.1f);
 
-        //stage_num = int.Parse(GameObject.Find("GameData").GetComponent<Data>().stageNum);
+        stage_num = int.Parse(GameObject.Find("GameData").GetComponent<Data>().stageNum);
 
-        //map_num = int.Parse(GameObject.Find("GameData").GetComponent<Data>().mapName);
+        map_num = int.Parse(GameObject.Find("GameData").GetComponent<Data>().mapName);
 
         init(map_num,stage_num);
         Invoke("FirstMove", 0.5f);
