@@ -201,7 +201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19249037}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4, y: -1.9293854, z: 0.9591357}
+  m_LocalPosition: {x: -4, y: -1.9293854, z: -0.09}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 1591613553}
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 19249037}
   Monster: {fileID: 0}
-  first_position: {x: -1, y: 1.8, z: 0}
+  first_position: {x: -1, y: 1.8, z: -0.09}
   chr_Died: 0
   HP: 100
   DAMAGE_1_Tier: 10
@@ -503,7 +503,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 99869412}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4, y: -1.0293853, z: 0.9591357}
+  m_LocalPosition: {x: -4, y: -1.0293853, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 1591613553}
@@ -542,7 +542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 99869412}
   Monster: {fileID: 0}
-  first_position: {x: -1.8, y: 2.7, z: 0}
+  first_position: {x: -1.8, y: 2.7, z: -0.09}
   chr_Died: 0
   HP: 100
   DAMAGE_1_Tier: 50
@@ -817,7 +817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &323295350
 RectTransform:
   m_ObjectHideFlags: 0
@@ -913,7 +913,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359720229}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4610862, y: 2.1732671, z: -0.9127552}
+  m_LocalPosition: {x: 1.4610862, y: 2.1732671, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -937,12 +937,21 @@ MonoBehaviour:
   - {fileID: 5510624584876748685, guid: aed01018d86e8754993a670cc714b930, type: 3}
   - {fileID: 2586380691892460718, guid: a4e740267eb3cb64a965f173c43deee6, type: 3}
   - {fileID: 5173732499617814456, guid: edec3ff065250f74cb170690577f05e0, type: 3}
+  - {fileID: 7796503439041831111, guid: 9263d8fc24750604190e0c289534e5de, type: 3}
+  - {fileID: 1802145105162148701, guid: ab34a1a9b81efc94ca4b74b0f224b3d5, type: 3}
+  - {fileID: 8385381968174512498, guid: 15d6fa177572f1f4285db7a3968f6ca1, type: 3}
   - {fileID: 6628818061323095640, guid: c992e979d5287404fbcf6035ceda6354, type: 3}
+  - {fileID: 8755475024463971660, guid: 6de283fb662bf6248a93ebc5973ccde6, type: 3}
+  - {fileID: 6261408304942293930, guid: 7aa8ab798d3c8fe4c965138c5b1b0025, type: 3}
+  - {fileID: 7831491381182013041, guid: 85b95713eb0dcc843adb913b8f29110d, type: 3}
+  - {fileID: 7185834203684967436, guid: 4ee0a059190c253489bea96657084d70, type: 3}
+  - {fileID: 4715455285557489105, guid: adc0e6c8c6829c546878b2f6782f70f9, type: 3}
   Monster_pos: []
   stage_num: 8
-  map_num: 0
+  map_num: 3
   monster: {fileID: 0}
   Monster_index: 0
+  Monster_count: 0
 --- !u!1 &500409228 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1906616783129595141, guid: 75cb612308941fe4ca50b9b4244ad8a6, type: 3}
@@ -1096,7 +1105,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &624964491
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2852,7 +2861,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1591613552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4671849, y: 3.7293854, z: -0.9691357}
+  m_LocalPosition: {x: 1.4671849, y: 3.7293854, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 99869414}
@@ -3059,7 +3068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerTxt: {fileID: 821677043}
-  first_time: 10
+  first_time: 1
   time: 0
   timer: 0
 --- !u!1 &2013666409
@@ -3248,7 +3257,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2021031687}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4, y: -0.12938547, z: 0.9591357}
+  m_LocalPosition: {x: -4, y: -0.12938547, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 1591613553}
@@ -3287,7 +3296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 2021031687}
   Monster: {fileID: 0}
-  first_position: {x: -1, y: 3.6, z: 0}
+  first_position: {x: -1, y: 3.6, z: -0.09}
   chr_Died: 0
   HP: 100
   DAMAGE_1_Tier: 10

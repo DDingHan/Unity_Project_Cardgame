@@ -70,6 +70,7 @@ public class Goblin : MonoBehaviour
     }
     IEnumerator Goblin_Moving()
     {
+        //살아있는 플레이어 중에 랜덤으로 선택
         do
         {
             int Player_index = Random.Range(0, 3);
@@ -77,14 +78,16 @@ public class Goblin : MonoBehaviour
         } while (Player.GetComponent<Character>().chr_Died);
         
         Debug.Log(Player.name);
+        //움직이기 전의 좌표 저장
         float Distance = goblin.transform.position.x - Player.transform.position.x;
-        while (Distance > 0.5f)
+        while (Distance > 0.8f)
         {
-            transform.position = Vector3.MoveTowards(goblin.transform.position, Player.transform.position + Vector3.up * 0.2f + Vector3.right * 0.5f, 3.0f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(goblin.transform.position, Player.transform.position + new Vector3(0.8f, 0.4f, -0.1f), 3.0f * Time.deltaTime);
             yield return new WaitForSecondsRealtime(0.01f);
             Distance = goblin.transform.position.x - Player.transform.position.x;
         }
         Goblin_animator.SetBool("Move", false);
+        yield return new WaitForSecondsRealtime(0.1f);
         Goblin_animator.SetBool("Attack", true);
         StartCoroutine(Goblin_Attacking());
     }
@@ -94,12 +97,14 @@ public class Goblin : MonoBehaviour
         int Goblin_attackCount = 1;
         while (Goblin_attackCount <= 1)
         {
+            yield return new WaitForSecondsRealtime(0.6f);
             Attack_Goblin();
             Debug.LogFormat("Goblin_Attackcount = {0}", Goblin_attackCount);
             Goblin_attackCount += 1;
-            yield return new WaitForSecondsRealtime(0.6f);
+            yield return new WaitForSecondsRealtime(0.2f);
         }
         Goblin_animator.SetBool("Attack", false);
+        yield return new WaitForSecondsRealtime(0.2f);
         Goblin_animator.SetBool("Move", true);
         StartCoroutine(Goblin_Moving_Back());
     }
@@ -119,7 +124,7 @@ public class Goblin : MonoBehaviour
 
     void SendMessage_MonsterIndex()
     {
-        GameObject.Find("Turn").GetComponent<Turn>().SendMessage("Monster_Attack", Monster_index + 1);
+        GameObject.Find("Monster").GetComponent<Monster>().SendMessage("Monster_Attack", Monster_index + 1);
     }
 
     void Attack_Goblin()

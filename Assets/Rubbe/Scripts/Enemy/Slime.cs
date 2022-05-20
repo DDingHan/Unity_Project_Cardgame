@@ -77,10 +77,10 @@ public class Slime : MonoBehaviour
         } while (Player.GetComponent<Character>().chr_Died);
         
         Debug.Log(Player.name);
-        float Distance = slime.transform.position.x - Player.transform.position.x;
+        float Distance = slime.transform.position.x - Player.transform.position.x; 
         while (Distance > 0.5f)
         {
-            transform.position = Vector3.MoveTowards(slime.transform.position, Player.transform.position + Vector3.up * 0.2f + Vector3.right * 0.5f, 3.0f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(slime.transform.position, Player.transform.position + new Vector3(0.5f, 0.2f, -0.1f), 3.0f * Time.deltaTime);
             yield return new WaitForSecondsRealtime(0.01f);
             Distance = slime.transform.position.x - Player.transform.position.x;
         }
@@ -115,7 +115,7 @@ public class Slime : MonoBehaviour
 
     void SendMessage_MonsterIndex()
     {
-        GameObject.Find("Turn").GetComponent<Turn>().SendMessage("Monster_Attack", Monster_index + 1);
+        GameObject.Find("Monster").GetComponent<Monster>().SendMessage("Monster_Attack", Monster_index + 1);
     }
 
     void Attack_Slime()

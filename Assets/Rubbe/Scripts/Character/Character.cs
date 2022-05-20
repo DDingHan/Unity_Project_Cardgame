@@ -131,11 +131,11 @@ public class Character : MonoBehaviour
         firstslime.GetComponent<Slime>().SendMessage("damaged_start");*/
     }
 
-    void damaged_start(int Slime_DAMAGE)
+    void damaged_start(int DAMAGE)
     {
-        Debug.Log(Slime_DAMAGE);
+        Debug.Log(DAMAGE);
         chr_animator.SetBool("Damaged", true);
-        HP -= Slime_DAMAGE;
+        HP -= DAMAGE;
         Invoke("damaged_end", 0.4f);
     }
     void damaged_end()
