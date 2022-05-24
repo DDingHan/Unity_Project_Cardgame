@@ -958,7 +958,7 @@ MonoBehaviour:
   - {fileID: 7185834203684967436, guid: 4ee0a059190c253489bea96657084d70, type: 3}
   - {fileID: 4715455285557489105, guid: adc0e6c8c6829c546878b2f6782f70f9, type: 3}
   Monster_pos: []
-  stage_num: 3
+  stage_num: 7
   map_num: 1
   monster: {fileID: 0}
   Monster_index: 0
