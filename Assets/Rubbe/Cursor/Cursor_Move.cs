@@ -76,7 +76,46 @@ public class Cursor_Move : MonoBehaviour
 
     void Move(int index)
     {
-        transform.position = Monster_child[index].transform.position + Vector3.up * 0.55f;
+        if (Monster_child[index].name == "Slime(Clone)")
+        {
+            transform.position = Monster_child[index].transform.position + Vector3.up * 0.68f;
+        }
+        else if (Monster_child[index].name == "Goblin(Clone)")
+        {
+            transform.position = Monster_child[index].transform.position + Vector3.up * 0.67f;
+        }
+        else if (Monster_child[index].name == "Mushroom(Clone)")
+        {
+            transform.position = Monster_child[index].transform.position + Vector3.up * 0.82f + Vector3.left * 0.02f;
+        }
+        else if (Monster_child[index].name == "BossSlime(Clone)" || Monster_child[index].name == "Skeleton2(Clone)")
+        {
+            transform.position = Monster_child[index].transform.position + Vector3.up * 0.82f;
+        }
+        else if (Monster_child[index].name == "FlyingEye(Clone)")
+        {
+            transform.position = Monster_child[index].transform.position + Vector3.up * 0.72f;
+        }
+        else if (Monster_child[index].name == "Skeleton1(Clone)")
+        {
+            transform.position = Monster_child[index].transform.position + Vector3.up * 0.64f + Vector3.right * 0.07f;
+        }
+        else if (Monster_child[index].name == "DarkSoldier(Clone)")
+        {
+            transform.position = Monster_child[index].transform.position + Vector3.up * 0.76f + Vector3.left * 0.05f;
+        }
+        else if (Monster_child[index].name == "LightBandit(Clone)" || Monster_child[index].name == "HeavyBandit(Clone)")
+        {
+            transform.position = Monster_child[index].transform.position + Vector3.up * 0.6f;
+        }
+        else if (Monster_child[index].name == "Martial(Clone)")
+        {
+            transform.position = Monster_child[index].transform.position + Vector3.up * 0.82f + Vector3.left * 0.1f;
+        }
+        else if (Monster_child[index].name == "Bringer(Clone)")
+        {
+            transform.position = Monster_child[index].transform.position + Vector3.up * 0.86f;
+        }
     }
 
     GameObject[] GetChildren(GameObject parent)

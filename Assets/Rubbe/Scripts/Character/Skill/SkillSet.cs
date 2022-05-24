@@ -104,7 +104,7 @@ public class SkillSet : MonoBehaviour
                 //StopCoroutine("AttackDelay");
                 isDelay = true;
                 Debug.Log("3티어 스킬 실행~");
-                GameObject.Find("Deck").GetComponent<RandomSelect>().CardUIList[cardIndex].SendMessage("StartCharacterAnimation");
+                GameObject.Find("Deck").GetComponent<RandomSelect>().CardUIList[cardIndex].SendMessage("StartCharacterAnimation",skill_Tier);
                 GameObject.Find("Deck").GetComponent<RandomSelect>().SendMessage("Skill_Tier", skill_Tier);
                 make_Skill_Effect();
                 isDelay = false;
@@ -114,6 +114,7 @@ public class SkillSet : MonoBehaviour
     }
 
     public GameObject hudDamageText;
+    public float save_skill_Tier;
 
     void make_Skill_Effect()
     {
@@ -164,6 +165,7 @@ public class SkillSet : MonoBehaviour
         }
         //GameObject hudText = Instantiate(hudDamageText);
         //hudText.GetComponent<DamageText>().damage = 5;
+        save_skill_Tier = skill_Tier;
         Invoke("TakeDamage", 0.7f);
     }
 
@@ -171,6 +173,18 @@ public class SkillSet : MonoBehaviour
     void TakeDamage()
     {
         GameObject hudText = Instantiate(hudDamageText,cursor.transform.position,hudDamageText.transform.rotation);
-        hudText.GetComponent<DamageText>().damage = 5;
+        if (save_skill_Tier == 1)
+        {
+            hudText.GetComponent<DamageText>().damage = GameObject.Find(AttackSubject).GetComponent<Character>().DAMAGE_1_Tier;
+        }
+        else if (save_skill_Tier == 2)
+        {
+            hudText.GetComponent<DamageText>().damage = GameObject.Find(AttackSubject).GetComponent<Character>().DAMAGE_2_Tier;
+        }
+        else if (save_skill_Tier == 3)
+        {
+            hudText.GetComponent<DamageText>().damage = GameObject.Find(AttackSubject).GetComponent<Character>().DAMAGE_3_Tier;
+        }
+        
     }
 }
