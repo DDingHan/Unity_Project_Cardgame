@@ -11,6 +11,10 @@ public class HP_Up : MonoBehaviour
     public GameObject ReadyObjects;
     public GameObject Map;
 
+    public GameObject MapNum;
+    public string stageNum;
+    public GameObject GameStart;
+
     public Text Explain;
     void Start()
     {
@@ -42,5 +46,7 @@ public class HP_Up : MonoBehaviour
         Map.SetActive(false);
         ReadyUI.SetActive(true);
         ReadyObjects.SetActive(true);
+        GameObject.Find("Start").GetComponent<ChangeScene>().SendMessage("setMap", MapNum);
+        GameObject.Find("Start").GetComponent<ChangeScene>().SendMessage("setStageNum", stageNum);
     }
 }

@@ -81,6 +81,15 @@ public class ChangeScene : MonoBehaviour
         Invoke("SceneChange_Stage", 0.5f);
     }
 
+    public void setMap(GameObject a)
+    {
+        Map = a;
+    }
+    public void setStageNum(string a)
+    {
+        stageNum = a;
+    }
+
     //public void 
     public void SceneChange_Stage()
     {

@@ -27,7 +27,10 @@ public class Character : MonoBehaviour
     {
         chr_animator = GetComponent<Animator>();
         x_scale = HPImage.transform.localScale.x;
+        float temp = GameObject.Find("GameData").GetComponent<Data>().HP_Level;
+        HP = HP + temp * 5;
         MaxHP = HP;
+        Debug.Log("캐릭터 레벨: " + temp + "   체력: " + MaxHP);
     }
     private void Update()
     {
