@@ -11,10 +11,18 @@ public class Menu_UI_Manager : MonoBehaviour
     public GameObject menuUI;
     bool menuUIActive = false;
 
-    public GameObject[] stages;
+    //public GameObject[] stages;
+
+    public GameObject Map1;
+    public GameObject Stages_1;
 
     void Start()
     {
+        if (GameObject.Find("GameData").GetComponent<Data>().mapName == "1")
+        {
+            Map1.SetActive(true);
+            Stages_1.SetActive(true);
+        }
         if (GameObject.Find("GameData").GetComponent<Data>().mapName != "" && GameObject.Find("GameData").GetComponent<Data>().stageNum != "")
         {
             /*GameObject[] stages = GameObject.FindGameObjectsWithTag("Stage");

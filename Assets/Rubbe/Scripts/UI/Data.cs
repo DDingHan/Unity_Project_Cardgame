@@ -31,4 +31,36 @@ public class Data : MonoBehaviour
     }
 
     public bool[] stageClearCheck = { false, false, false, false, false, false, false, false };
+
+    public float HP_Level=1f;
+
+    public float Gold = 0;
+
+    void HPUpgrade()
+    {
+        if (HP_Level <= 5)
+        {
+            if (Gold >= 1000)
+            {
+                Gold = Gold - 1000;
+                HP_Level++;
+            }
+        }
+        else if (HP_Level <= 10)
+        {
+            if (Gold >= 1500)
+            {
+                Gold = Gold - 1500;
+                HP_Level++;
+            }
+        }
+        else if (HP_Level <= 15)
+        {
+            if (Gold >= 2000)
+            {
+                Gold = Gold - 2000;
+                HP_Level++;
+            }
+        }
+    }
 }
