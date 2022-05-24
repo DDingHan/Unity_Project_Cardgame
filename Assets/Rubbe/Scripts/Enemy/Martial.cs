@@ -7,12 +7,13 @@ public class Martial : MonoBehaviour
     public GameObject martial;
     public GameObject Player;
     Animator Martial_animator;
-    public float HP = 50;
-    public int DAMAGE = 10;
+    public float HP;
+    public int DAMAGE;
     public float Player_Skill_Tier;
     public int Player_Skill_Damage;
     public int Monster_index;
-    
+    public float x_scale;
+
     Vector3 first_position;
 
     public GameObject HPImage;
@@ -21,6 +22,7 @@ public class Martial : MonoBehaviour
     private void Start()
     {
         Martial_animator = GetComponent<Animator>();
+        x_scale = HPImage.transform.localScale.x;
     }
 
     private void Update()
@@ -32,7 +34,7 @@ public class Martial : MonoBehaviour
         }
         if (MaxHP != 0)
         {
-            HPImage.transform.localScale = new Vector3((HP / MaxHP) / 10f, 0.02f, 0.1f);
+            HPImage.transform.localScale = new Vector3((HP / MaxHP) * x_scale, HPImage.transform.localScale.y, HPImage.transform.localScale.z);
         }
     }
 

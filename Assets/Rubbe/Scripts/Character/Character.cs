@@ -12,10 +12,13 @@ public class Character : MonoBehaviour
     bool isSolider = false;
     public bool chr_Died = false;
 
-    public int HP = 100;
-    public int DAMAGE_1_Tier = 10;
-    public int DAMAGE_2_Tier = 20;
-    public int DAMAGE_3_Tier = 30;
+    public GameObject HPImage;
+    public float HP;
+    public float MaxHP;
+    public float x_scale;
+    public int DAMAGE_1_Tier;
+    public int DAMAGE_2_Tier;
+    public int DAMAGE_3_Tier;
     public float skill_Tier;
 
     //int damaged_count = 0;
@@ -23,6 +26,20 @@ public class Character : MonoBehaviour
     private void Start()
     {
         chr_animator = GetComponent<Animator>();
+        x_scale = HPImage.transform.localScale.x;
+        MaxHP = HP;
+    }
+    private void Update()
+    {
+        if (HP <= 0)
+        {
+            MaxHP = 0;
+            HPImage.SetActive(false);
+        }
+        if (MaxHP != 0)
+        {
+            HPImage.transform.localScale = new Vector3((HP / MaxHP) * x_scale, HPImage.transform.localScale.y, HPImage.transform.localScale.z);
+        }
     }
     //#4-1. solider일때만 움직이고 공격후 다시 원위치로 오기
     void Move(object[] index)
@@ -106,29 +123,54 @@ public class Character : MonoBehaviour
         skill_info[1] = DAMAGE_2_Tier;
         skill_info[2] = DAMAGE_3_Tier;
         skill_info[3] = skill_Tier;
-        Monster.GetComponent<Slime>().SendMessage("damaged_start", skill_info);
-
-
-
-        //거리가 가장 가까운 슬라임에게 데미지 전달, 추후 수정
-
-        /*slimes = new List<GameObject>(GameObject.FindGameObjectsWithTag("Slime"));
-        GameObject firstslime = slimes[0];
-        if (slimes.Count != 0)
+        if (Monster.name == "Slime(Clone)")
         {
-            float shortDis = Vector3.Distance(transform.position, slimes[0].transform.position);
-            foreach (GameObject slime in slimes)
-            {
-                float Distance = Vector3.Distance(transform.position, slime.transform.position);
-
-                if (Distance < shortDis)
-                {
-                    shortDis = Distance;
-                    firstslime = slime;
-                }
-            }
+            Monster.GetComponent<Slime>().SendMessage("damaged_start", skill_info);
         }
-        firstslime.GetComponent<Slime>().SendMessage("damaged_start");*/
+        else if (Monster.name == "Goblin(Clone)")
+        {
+            Monster.GetComponent<Goblin>().SendMessage("damaged_start", skill_info);
+        }
+        else if (Monster.name == "Mushroom(Clone)")
+        {
+            Monster.GetComponent<Mushroom>().SendMessage("damaged_start", skill_info);
+        }
+        else if (Monster.name == "BossSlime(Clone)")
+        {
+            Monster.GetComponent<BossSlime>().SendMessage("damaged_start", skill_info);
+        }
+        else if (Monster.name == "FlyingEye(Clone)")
+        {
+            Monster.GetComponent<FlyingEye>().SendMessage("damaged_start", skill_info);
+        }
+        else if (Monster.name == "Skeleton1(Clone)")
+        {
+            Monster.GetComponent<Skeleton1>().SendMessage("damaged_start", skill_info);
+        }
+        else if (Monster.name == "Skeleton2(Clone)")
+        {
+            Monster.GetComponent<Skeleton2>().SendMessage("damaged_start", skill_info);
+        }
+        else if (Monster.name == "DarkSoldier(Clone)")
+        {
+            Monster.GetComponent<DarkSoldier>().SendMessage("damaged_start", skill_info);
+        }
+        else if (Monster.name == "LightBandit(Clone)")
+        {
+            Monster.GetComponent<LightBandit>().SendMessage("damaged_start", skill_info);
+        }
+        else if (Monster.name == "HeavyBandit(Clone)")
+        {
+            Monster.GetComponent<HeavyBandit>().SendMessage("damaged_start", skill_info);
+        }
+        else if (Monster.name == "Martial(Clone)")
+        {
+            Monster.GetComponent<Martial>().SendMessage("damaged_start", skill_info);
+        }
+        else if (Monster.name == "Bringer(Clone)")
+        {
+            Monster.GetComponent<Bringer>().SendMessage("damaged_start", skill_info);
+        }
     }
 
     void damaged_start(int DAMAGE)

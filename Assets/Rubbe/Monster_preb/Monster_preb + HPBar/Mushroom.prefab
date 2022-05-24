@@ -202,7 +202,7 @@ MonoBehaviour:
   mushroom: {fileID: 5173732499617814456}
   Player: {fileID: 0}
   HP: 50
-  DAMAGE: 10
+  DAMAGE: 15
   Player_Skill_Tier: 0
   Player_Skill_Damage: 0
   Monster_index: 0
@@ -233,8 +233,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7086799249952989580}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.21799994, z: 0}
-  m_LocalScale: {x: 0.19999999, y: 0.04, z: 0.099999994}
+  m_LocalPosition: {x: 0, y: 0.19, z: 0}
+  m_LocalScale: {x: 0.24, y: 0.03, z: 0.1}
   m_Children: []
   m_Father: {fileID: 5173732499617814461}
   m_RootOrder: 1
