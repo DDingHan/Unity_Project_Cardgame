@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Rubbe/Scenes/Lot.unity
     guid: 910164332468bcc4d852e6573598e6a9
+  - enabled: 1
+    path: Assets/Rubbe/Scenes/3.Skill Setting.unity
+    guid: fad4d7c44dd764a4c976bccd0e2f365d
   m_configObjects: {}
