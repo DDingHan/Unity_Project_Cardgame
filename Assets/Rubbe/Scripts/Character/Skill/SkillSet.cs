@@ -29,6 +29,7 @@ public class SkillSet : MonoBehaviour
     public string AttackSubject = "";
     public float skill_Tier = 0;
     public int cardIndex;
+    object[] success_card_set = new object[2];
     // Start is called before the first frame update
     void Start()
     {
@@ -44,22 +45,36 @@ public class SkillSet : MonoBehaviour
             Timer = Timer + Time.deltaTime;
             if (Timer >= delayTime)
             {
-                Timer = 0f;
-                isDelay = true;
-                Debug.Log("스킬 티어 " + skill_Tier + " 발동중");
-                GameObject.Find("Deck").GetComponent<RandomSelect>().CardUIList[cardIndex].SendMessage("StartCharacterAnimation",skill_Tier);
-                GameObject.Find("Deck").GetComponent<RandomSelect>().SendMessage("Skill_Tier",skill_Tier);
-                make_Skill_Effect();
-                isDelay = false;
-                skill_Tier = 0;
+                if (GameObject.Find("Timer").GetComponent<Timer>().time > 1)
+                {
+                    Timer = 0f;
+                    isDelay = true;
+                    Debug.Log("스킬 티어 " + skill_Tier + " 발동중");
+                    GameObject.Find("Deck").GetComponent<RandomSelect>().CardUIList[cardIndex].SendMessage("StartCharacterAnimation", skill_Tier);
+                    GameObject.Find("Deck").GetComponent<RandomSelect>().SendMessage("Skill_Tier", skill_Tier);
+                    make_Skill_Effect();
+                    isDelay = false;
+                    skill_Tier = 0;
+                }
+                else
+                {
+                    Timer = 0f;
+                    Debug.Log("스킬 시전 중 타이머 종료");
+                    GameObject.Find("Deck").GetComponent<RandomSelect>().SendMessage("Skill_Tier", skill_Tier);
+                    GameObject.Find("Deck").GetComponent<RandomSelect>().SendMessage("ResetAnimation_Success", success_card_set);
+                    isDelay = false;
+                    skill_Tier = 0;
+                }
             }
         }
     }
 
-    void invoke_Skill(string CharacterName)
+    void invoke_Skill(object[] index)
     {
         //Instantiate(Warrior_Skill_Tier1, Warrior_Skill_Tier1.transform.position, Warrior_Skill_Tier1.transform.rotation);
-        AttackSubject = CharacterName;
+        success_card_set[0] = index[0];
+        success_card_set[1] = index[1];
+        AttackSubject = (string)index[2];
         if (isDelay == false)
         {
             skill_Tier = 1;
@@ -102,13 +117,25 @@ public class SkillSet : MonoBehaviour
             {
                 skill_Tier = 3;
                 //StopCoroutine("AttackDelay");
-                isDelay = true;
-                Debug.Log("3티어 스킬 실행~");
-                GameObject.Find("Deck").GetComponent<RandomSelect>().CardUIList[cardIndex].SendMessage("StartCharacterAnimation",skill_Tier);
-                GameObject.Find("Deck").GetComponent<RandomSelect>().SendMessage("Skill_Tier", skill_Tier);
-                make_Skill_Effect();
-                isDelay = false;
-                skill_Tier = 0;
+                if (GameObject.Find("Timer").GetComponent<Timer>().time > 1)
+                {
+                    isDelay = true;
+                    Debug.Log("3티어 스킬 실행~");
+                    GameObject.Find("Deck").GetComponent<RandomSelect>().CardUIList[cardIndex].SendMessage("StartCharacterAnimation", skill_Tier);
+                    GameObject.Find("Deck").GetComponent<RandomSelect>().SendMessage("Skill_Tier", skill_Tier);
+                    make_Skill_Effect();
+                    isDelay = false;
+                    skill_Tier = 0;
+                }
+                else
+                {
+                    Timer = 0f;
+                    Debug.Log("스킬 시전 중 타이머 종료");
+                    GameObject.Find("Deck").GetComponent<RandomSelect>().SendMessage("Skill_Tier", skill_Tier);
+                    GameObject.Find("Deck").GetComponent<RandomSelect>().SendMessage("ResetAnimation_Success", success_card_set);
+                    isDelay = false;
+                    skill_Tier = 0;
+                }
             }
         }
     }

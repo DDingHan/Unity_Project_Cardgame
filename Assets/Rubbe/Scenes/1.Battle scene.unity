@@ -252,6 +252,8 @@ MonoBehaviour:
   DAMAGE_2_Tier: 20
   DAMAGE_3_Tier: 30
   skill_Tier: 0
+  hudDamageText: {fileID: 374651685238729146, guid: ef96aa0314d15f54e8aa8d67a09a2513, type: 3}
+  cursor: {fileID: 1235130775}
 --- !u!1 &27385846
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,10 +558,12 @@ MonoBehaviour:
   HP: 40
   MaxHP: 0
   x_scale: 0
-  DAMAGE_1_Tier: 10
-  DAMAGE_2_Tier: 20
-  DAMAGE_3_Tier: 30
+  DAMAGE_1_Tier: 1
+  DAMAGE_2_Tier: 1
+  DAMAGE_3_Tier: 1
   skill_Tier: 0
+  hudDamageText: {fileID: 374651685238729146, guid: ef96aa0314d15f54e8aa8d67a09a2513, type: 3}
+  cursor: {fileID: 1235130775}
 --- !u!1 &153555081
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,7 +962,7 @@ MonoBehaviour:
   - {fileID: 7185834203684967436, guid: 4ee0a059190c253489bea96657084d70, type: 3}
   - {fileID: 4715455285557489105, guid: adc0e6c8c6829c546878b2f6782f70f9, type: 3}
   Monster_pos: []
-  stage_num: 7
+  stage_num: 1
   map_num: 1
   monster: {fileID: 0}
   Monster_index: 0
@@ -3571,7 +3575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerTxt: {fileID: 821677043}
-  first_time: 10
+  first_time: 3
   time: 0
   timer: 0
 --- !u!1 &2013666409
@@ -3811,6 +3815,8 @@ MonoBehaviour:
   DAMAGE_2_Tier: 20
   DAMAGE_3_Tier: 30
   skill_Tier: 0
+  hudDamageText: {fileID: 374651685238729146, guid: ef96aa0314d15f54e8aa8d67a09a2513, type: 3}
+  cursor: {fileID: 1235130775}
 --- !u!1001 &1906616783057415817
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -180,7 +180,9 @@ public class Character : MonoBehaviour
     {
         Debug.Log(DAMAGE);
         chr_animator.SetBool("Damaged", true);
+        TakeDamage(DAMAGE);
         HP -= DAMAGE;
+        //Invoke("TakeDamage", 0.7f);
         Invoke("damaged_end", 0.4f);
     }
     void damaged_end()
@@ -215,5 +217,13 @@ public class Character : MonoBehaviour
             yield return new WaitForSecondsRealtime(0.01f);
             Distance = Vector3.Distance(character.transform.position, first_position);
         }
+    }
+
+    public GameObject hudDamageText;
+    public GameObject cursor;
+    void TakeDamage(int DAMAGE)
+    {
+        GameObject hudText = Instantiate(hudDamageText, character.transform.position, hudDamageText.transform.rotation);
+        hudText.GetComponent<DamageText>().damage = DAMAGE;
     }
 }

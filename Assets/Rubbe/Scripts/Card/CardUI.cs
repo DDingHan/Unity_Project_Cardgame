@@ -82,7 +82,7 @@ public class CardUI : MonoBehaviour, IPointerDownHandler
                         GameObject.Find("Deck").GetComponent<RandomSelect>().CardName = "";
                         GameObject.Find("Deck").GetComponent<RandomSelect>().secondCardIndex = cardIndex;
                         //#1. 카드 두 짝이 맞았을 때 메세지 전달
-                        GameObject.Find("Deck").GetComponent<RandomSelect>().SendMessage("StartReset_Success");
+                        GameObject.Find("Deck").GetComponent<RandomSelect>().SendMessage("StartReset_Success");                                                
                     }
                     else
                     {
@@ -96,10 +96,10 @@ public class CardUI : MonoBehaviour, IPointerDownHandler
                 }
                 else if (GameObject.Find("Deck").GetComponent<SkillSet>().AttackSubject == character.name&& GameObject.Find("Deck").GetComponent<SkillSet>().skill_Tier!=0)
                 {
-                    GameObject.Find("Deck").GetComponent<RandomSelect>().Checking_Clicked_Card = false;
-                    GameObject.Find("Deck").GetComponent<RandomSelect>().CardName = "";
-                    GameObject.Find("Deck").GetComponent<RandomSelect>().secondCardIndex = cardIndex;
-                    GameObject.Find("Deck").GetComponent<RandomSelect>().SendMessage("StartReset_Success_Next",character.name);
+                        GameObject.Find("Deck").GetComponent<RandomSelect>().Checking_Clicked_Card = false;
+                        GameObject.Find("Deck").GetComponent<RandomSelect>().CardName = "";
+                        GameObject.Find("Deck").GetComponent<RandomSelect>().secondCardIndex = cardIndex;
+                        GameObject.Find("Deck").GetComponent<RandomSelect>().SendMessage("StartReset_Success_Next", character.name);
                 }
                 //이미 완성된 카드 셋이 발동중일때
                 else
@@ -143,16 +143,6 @@ public class CardUI : MonoBehaviour, IPointerDownHandler
     {
         success_card_set[0] = index[0];
         success_card_set[1] = index[1];
-        /*        if(character.name == "Soldier")
-                {
-                    character.GetComponent<Character>().SendMessage("Move", success_card_set);
-                    Invoke("invoke_Skill", 1.0f);
-                }
-                else
-                {
-                    character.GetComponent<Character>().SendMessage("Attack",success_card_set);
-                }*/
-        //Invoke("invoke_Skill", 1.0f);
         invoke_Skill();
     }
     void Saving_Second(object[] index)         //secondCardindex에 해당하는 카드일 경우
@@ -193,11 +183,11 @@ public class CardUI : MonoBehaviour, IPointerDownHandler
 
     void invoke_Skill()
     {
-        Debug.Log("스킬 들어갑니다.");
-        /*if (character.name == "Soldier")
-        {
-            GameObject.Find("Deck").GetComponent<SkillSet>().SendMessage("invoke_Skill",character.name);
-        }*/
-        GameObject.Find("Deck").GetComponent<SkillSet>().SendMessage("invoke_Skill", character.name);
+        object[] success_card_set_and_character_name = new object[3];
+        success_card_set_and_character_name[0] = success_card_set[0];
+        success_card_set_and_character_name[1] = success_card_set[1];
+        success_card_set_and_character_name[2] = character.name;
+        //Debug.Log("스킬 들어갑니다.");
+        GameObject.Find("Deck").GetComponent<SkillSet>().SendMessage("invoke_Skill", success_card_set_and_character_name);
     }
 }

@@ -84,11 +84,11 @@ public class RandomSelect : MonoBehaviour
     {
         success_card_set[0] = firstCardIndex;
         success_card_set[1] = secondCardIndex;
-        CardUIList[firstCardIndex].SendMessage("Saving_First",success_card_set);
+        CardUIList[firstCardIndex].SendMessage("Saving_First", success_card_set);
         CardUIList[secondCardIndex].SendMessage("Saving_Second", success_card_set);
         if (!GameObject.Find("Screen_Effect").GetComponent<FeverTime>().isFeverTime)
         {
-            slider.value += 0.1f;
+            //slider.value += 0.1f;
             if (slider.value == 1)
             {
                 GameObject.Find("Screen_Effect").GetComponent<FeverTime>().SendMessage("Screen_Effect");
@@ -117,7 +117,7 @@ public class RandomSelect : MonoBehaviour
         }
         if (slider.value != 0&& !GameObject.Find("Screen_Effect").GetComponent<FeverTime>().isFeverTime)
         {
-            slider.value += 0.1f;
+            //slider.value += 0.1f;
             if (slider.value == 1)
             {
                 GameObject.Find("Screen_Effect").GetComponent<FeverTime>().SendMessage("Screen_Effect");
