@@ -9138,6 +9138,18 @@ MonoBehaviour:
   Archer_Tier_1: {fileID: 1989451965}
   Archer_Tier_2: {fileID: 356380974}
   Archer_Tier_3: {fileID: 1634281885}
+  Warrior_Main_1: {fileID: 21300000, guid: b9c61c6896eff5b43ae44d047f49b31d, type: 3}
+  Warrior_Main_2: {fileID: 21300000, guid: 954cdace6e17b3d4890cbbbfe98ef2fe, type: 3}
+  Warrior_Main_3: {fileID: 21300000, guid: e5f8e29c0eb39d74e9509b0469b5204c, type: 3}
+  Mage_Main_1: {fileID: 21300000, guid: 188d00ffd2a18c341a38d8ed6b131b7c, type: 3}
+  Mage_Main_2: {fileID: 21300000, guid: aa0f991c64b8fcd4f9b052e24775c686, type: 3}
+  Mage_Main_3: {fileID: 21300000, guid: 7b34caca00a1514468b8d9cc005a43fc, type: 3}
+  Archer_Main_1: {fileID: 21300000, guid: 9f922002032136c4687b8dced9bc624c, type: 3}
+  Archer_Main_2: {fileID: 21300000, guid: 22ebb074f4a6be446b9e9a132ff9036d, type: 3}
+  Archer_Main_3: {fileID: 21300000, guid: 8cc7ca0e29ced7b4f84e8c4ef7deb28b, type: 3}
+  Now_Tier1: {fileID: 1570041440}
+  Now_Tier2: {fileID: 371493423}
+  Now_Tier3: {fileID: 2031633987}
   Now_Tier: 
 --- !u!1 &1209965260
 GameObject:

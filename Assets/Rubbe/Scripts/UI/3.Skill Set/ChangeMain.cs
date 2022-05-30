@@ -26,11 +26,31 @@ public class ChangeMain : MonoBehaviour
     public GameObject Archer_Tier_2;
     public GameObject Archer_Tier_3;
 
+    public Sprite Warrior_Main_1;
+    public Sprite Warrior_Main_2;
+    public Sprite Warrior_Main_3;
+
+    public Sprite Mage_Main_1;
+    public Sprite Mage_Main_2;
+    public Sprite Mage_Main_3;
+
+    public Sprite Archer_Main_1;
+    public Sprite Archer_Main_2;
+    public Sprite Archer_Main_3;
+
+    public Image Now_Tier1;
+    public Image Now_Tier2;
+    public Image Now_Tier3;
+
     public string Now_Tier;
 
     void Start()
     {
         Now_Tier = "1";
+
+        Now_Tier1.sprite = Warrior_Main_1;
+        Now_Tier2.sprite = Warrior_Main_2;
+        Now_Tier3.sprite = Warrior_Main_3;
     }
 
     // Update is called once per frame
@@ -52,6 +72,10 @@ public class ChangeMain : MonoBehaviour
             Mage_Tier_1.SetActive(true);
 
             Now_Tier = "1";
+
+            Now_Tier1.sprite = Mage_Main_1;
+            Now_Tier2.sprite = Mage_Main_2;
+            Now_Tier3.sprite = Mage_Main_3;
         }
         else if (Main.sprite == mage)
         {
@@ -64,6 +88,10 @@ public class ChangeMain : MonoBehaviour
             Archer_Tier_1.SetActive(true);
 
             Now_Tier = "1";
+
+            Now_Tier1.sprite = Archer_Main_1;
+            Now_Tier2.sprite = Archer_Main_2;
+            Now_Tier3.sprite = Archer_Main_3;
         }
         else if (Main.sprite == archer)
         {
@@ -76,6 +104,10 @@ public class ChangeMain : MonoBehaviour
             Warrior_Tier_1.SetActive(true);
 
             Now_Tier = "1";
+
+            Now_Tier1.sprite = Warrior_Main_1;
+            Now_Tier2.sprite = Warrior_Main_2;
+            Now_Tier3.sprite = Warrior_Main_3;
         }
     }
 
@@ -92,6 +124,10 @@ public class ChangeMain : MonoBehaviour
             Archer_Tier_1.SetActive(true);
 
             Now_Tier = "1";
+
+            Now_Tier1.sprite = Archer_Main_1;
+            Now_Tier2.sprite = Archer_Main_2;
+            Now_Tier3.sprite = Archer_Main_3;
         }
         else if (Main.sprite == mage)
         {
@@ -104,6 +140,10 @@ public class ChangeMain : MonoBehaviour
             Warrior_Tier_1.SetActive(true);
 
             Now_Tier = "1";
+
+            Now_Tier1.sprite = Warrior_Main_1;
+            Now_Tier2.sprite = Warrior_Main_2;
+            Now_Tier3.sprite = Warrior_Main_3;
         }
         else if (Main.sprite == archer)
         {
@@ -116,6 +156,10 @@ public class ChangeMain : MonoBehaviour
             Mage_Tier_1.SetActive(true);
 
             Now_Tier = "1";
+
+            Now_Tier1.sprite = Mage_Main_1;
+            Now_Tier2.sprite = Mage_Main_2;
+            Now_Tier3.sprite = Mage_Main_3;
         }
     }
 

@@ -30,14 +30,66 @@ public class SettingSkill : MonoBehaviour
         if (temp == "1")
         {
             Now_Tier1.sprite = Icon.sprite;
+            Click_Skill_Update_ChangeMain(temp);
         }
         else if (temp == "2")
         {
             Now_Tier2.sprite = Icon.sprite;
+            Click_Skill_Update_ChangeMain(temp);
         }
         else if (temp == "3")
         {
             Now_Tier3.sprite = Icon.sprite;
+            Click_Skill_Update_ChangeMain(temp);
+        }
+    }
+
+    void Click_Skill_Update_ChangeMain(string temp)
+    {
+        if(GameObject.Find("Change").GetComponent<ChangeMain>().Main.sprite== GameObject.Find("Change").GetComponent<ChangeMain>().warrior)
+        {
+            if (temp == "1")
+            {
+                GameObject.Find("Change").GetComponent<ChangeMain>().Warrior_Main_1 = Icon.sprite;
+            }
+            else if (temp == "2")
+            {
+                GameObject.Find("Change").GetComponent<ChangeMain>().Warrior_Main_2 = Icon.sprite;
+            }
+            else if (temp == "3")
+            {
+                GameObject.Find("Change").GetComponent<ChangeMain>().Warrior_Main_3 = Icon.sprite;
+            }
+        }
+        else if (GameObject.Find("Change").GetComponent<ChangeMain>().Main.sprite == GameObject.Find("Change").GetComponent<ChangeMain>().mage)
+        {
+            if (temp == "1")
+            {
+                GameObject.Find("Change").GetComponent<ChangeMain>().Mage_Main_1 = Icon.sprite;
+            }
+            else if (temp == "2")
+            {
+                GameObject.Find("Change").GetComponent<ChangeMain>().Mage_Main_2 = Icon.sprite;
+            }
+            else if (temp == "3")
+            {
+                GameObject.Find("Change").GetComponent<ChangeMain>().Mage_Main_3 = Icon.sprite;
+            }
+        }
+        else if (GameObject.Find("Change").GetComponent<ChangeMain>().Main.sprite == GameObject.Find("Change").GetComponent<ChangeMain>().archer)
+        {
+            if (temp == "1")
+            {
+                GameObject.Find("Change").GetComponent<ChangeMain>().Archer_Main_1 = Icon.sprite;
+            }
+            else if (temp == "2")
+            {
+                GameObject.Find("Change").GetComponent<ChangeMain>().Archer_Main_2 = Icon.sprite;
+            }
+            else if (temp == "3")
+            {
+                GameObject.Find("Change").GetComponent<ChangeMain>().Archer_Main_3 = Icon.sprite;
+            }
         }
     }
 }
