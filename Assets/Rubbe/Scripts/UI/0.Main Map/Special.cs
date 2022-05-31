@@ -8,6 +8,7 @@ public class Special : MonoBehaviour
     public void special()
     {
         Debug.Log("special");
-        SceneManager.LoadScene("4.Lot Scene");
+        SceneManager.LoadScene("4.Lot Scene demo");
+        //SceneManager.LoadScene("4.Lot Scene");
     }
 }
