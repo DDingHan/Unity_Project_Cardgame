@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Data : MonoBehaviour
 {
+    public int nowGold;
+    public int[,] nowGems;
     private void Awake()
     {
         var obj = FindObjectsOfType<Data>();

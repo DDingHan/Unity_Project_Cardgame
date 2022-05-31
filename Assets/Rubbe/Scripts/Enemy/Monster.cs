@@ -8,8 +8,8 @@ public class Monster : MonoBehaviour
     public GameObject Monsters;
     public GameObject[] Monster_preb;
     public Vector3[] Monster_pos;
-    public int stage_num;
     public int map_num;
+    public int stage_num;
 
     // Start is called before the first frame update
     void Start()
@@ -20,12 +20,22 @@ public class Monster : MonoBehaviour
         Monster_pos[2] = new Vector3(2.5f, 3.0f, -0.1f);
         Monster_pos[3] = new Vector3(2.5f, 2.0f, -0.1f);
 
-        //stage_num = int.Parse(GameObject.Find("GameData").GetComponent<Data>().stageNum);
-
-        //map_num = int.Parse(GameObject.Find("GameData").GetComponent<Data>().mapName);
+        stage_num = int.Parse(GameObject.Find("GameData").GetComponent<Data>().stageNum);
+        map_num = int.Parse(GameObject.Find("GameData").GetComponent<Data>().mapName);
 
         init(map_num,stage_num);
         Invoke("FirstMove", 0.5f);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            for (int i = 0; i < Monsters.transform.childCount; i++)
+            {
+                Monsters.transform.GetChild(i).gameObject.SetActive(false);
+            }
+        }
     }
 
     void init(int mapNum, int stageNum)
