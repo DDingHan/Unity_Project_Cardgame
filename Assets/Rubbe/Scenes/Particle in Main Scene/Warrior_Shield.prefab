@@ -4747,7 +4747,7 @@ GameObject:
   - component: {fileID: 2454572718470425930}
   - component: {fileID: 2454954794745751416}
   m_Layer: 0
-  m_Name: Magician_Barrier_Semi
+  m_Name: Warrior_Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

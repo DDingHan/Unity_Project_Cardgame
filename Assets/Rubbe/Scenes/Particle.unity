@@ -35550,6 +35550,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcaf2c84bd66c484bbd7d0248ae698dd, type: 3}
+--- !u!1001 &1109352928828299271
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1109352928089300184, guid: 5ca3c4fa1bb4efb4da91e139aff38840, type: 3}
+      propertyPath: m_RootOrder
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109352928089300184, guid: 5ca3c4fa1bb4efb4da91e139aff38840, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109352928089300184, guid: 5ca3c4fa1bb4efb4da91e139aff38840, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109352928089300184, guid: 5ca3c4fa1bb4efb4da91e139aff38840, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109352928089300184, guid: 5ca3c4fa1bb4efb4da91e139aff38840, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109352928089300184, guid: 5ca3c4fa1bb4efb4da91e139aff38840, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109352928089300184, guid: 5ca3c4fa1bb4efb4da91e139aff38840, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109352928089300184, guid: 5ca3c4fa1bb4efb4da91e139aff38840, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109352928089300184, guid: 5ca3c4fa1bb4efb4da91e139aff38840, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109352928089300184, guid: 5ca3c4fa1bb4efb4da91e139aff38840, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109352928089300184, guid: 5ca3c4fa1bb4efb4da91e139aff38840, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109352928089300187, guid: 5ca3c4fa1bb4efb4da91e139aff38840, type: 3}
+      propertyPath: m_Name
+      value: Wind Smash
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5ca3c4fa1bb4efb4da91e139aff38840, type: 3}
 --- !u!1001 &1968713690564956290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35560,6 +35617,10 @@ PrefabInstance:
     - target: {fileID: 2154629897253011729, guid: a169f21f141953541a992f369b545948, type: 3}
       propertyPath: m_Name
       value: Magician_Meteo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2154629897253011729, guid: a169f21f141953541a992f369b545948, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4621059218422587928, guid: a169f21f141953541a992f369b545948, type: 3}
       propertyPath: m_RootOrder
