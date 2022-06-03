@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Data : MonoBehaviour
 {
+    public GameObject datacontroller;
     public int nowGold;
-    public int[,] nowGems;
+    public int[] nowGems;
     private void Awake()
     {
         var obj = FindObjectsOfType<Data>();
@@ -36,31 +37,31 @@ public class Data : MonoBehaviour
 
     public float HP_Level=1f;
 
-    public float Gold = 0;
+    //public float Gold = 0;
 
     void HPUpgrade()
     {
         if (HP_Level <= 5)
         {
-            if (Gold >= 1000)
+            if (nowGold >= 1000)
             {
-                Gold = Gold - 1000;
+                nowGold = nowGold - 1000;
                 HP_Level++;
             }
         }
         else if (HP_Level <= 10)
         {
-            if (Gold >= 1500)
+            if (nowGold >= 1500)
             {
-                Gold = Gold - 1500;
+                nowGold = nowGold - 1500;
                 HP_Level++;
             }
         }
         else if (HP_Level <= 15)
         {
-            if (Gold >= 2000)
+            if (nowGold >= 2000)
             {
-                Gold = Gold - 2000;
+                nowGold = nowGold - 2000;
                 HP_Level++;
             }
         }

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Menu_UI_Manager : MonoBehaviour
 {
@@ -50,7 +52,16 @@ public class Menu_UI_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        GameObject[] stages = GameObject.FindGameObjectsWithTag("Stage");
+
+        for (int i = 0; i < stages.Length; i++)
+        {
+            if (GameObject.Find("GameData").GetComponent<Data>().stageClearCheck[i] == true)
+            {
+                stages[i].GetComponent<SpriteRenderer>().color = Color.blue;
+            }
+        }
+
     }
 
     public void showMessageUI()

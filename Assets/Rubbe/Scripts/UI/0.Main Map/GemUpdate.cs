@@ -6,18 +6,15 @@ using UnityEngine.SceneManagement;
 public class GemUpdate : MonoBehaviour
 {
     public Text[] GemTexts;
-    public int[,] nowGems;
+    //public int[] nowGems;
 
 
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0; i < 2; i++)
+        for(int i = 0; i < 6; i++)
         {
-            for(int j = 0; j < 3; j++)
-            {
-                GemTexts[i*3+j].text = nowGems[i,j].ToString();
-            }            
+            GemTexts[i].text = GameObject.Find("GameData").GetComponent<Data>().nowGems[i].ToString();
         }
     }
     private void OnEnable()
@@ -31,25 +28,20 @@ public class GemUpdate : MonoBehaviour
         //클리어 보상 화면에서 메인 씬으로 넘어올 때 클리어 보상젬을 원래젬에 더하기
         if (GameObject.Find("RewardData") != null)
         {
-            nowGems = GameObject.Find("GameData").GetComponent<Data>().nowGems;
-            int[,] clearGems = GameObject.Find("RewardData").GetComponent<RewardData>().clearGem;
-            for (int i = 0; i < 2; i++)
+            int[] clearGems = GameObject.Find("RewardData").GetComponent<RewardData>().clearGem;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < 3; j++)
+                if (clearGems[i] != 0)
                 {
-                    if (clearGems[i, j] != 0)
-                    {
-                        nowGems[i,j] += clearGems[i,j];
-                    }
+                    GameObject.Find("GameData").GetComponent<Data>().nowGems[i] += clearGems[i];
                 }
             }
         }
         //씬이 맨 처음 호출 될 때
         else
         {
-            nowGems = new int[2, 3] { { 0, 0, 0 }, { 0, 0, 0 } };
+            GameObject.Find("GameData").GetComponent<Data>().nowGems = new int[] { 0, 0, 0, 0, 0, 0 };
         }
-        GameObject.Find("GameData").GetComponent<Data>().nowGems = nowGems;
     }
     void OnDisable()
     {
